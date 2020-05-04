@@ -26,27 +26,24 @@ var controller = {
     },
 
     validateCode: function(req, res) {
-        const urlStudentRep = "https://api.github.com/repos/servicioSocialUady/sample-assignment-individual-";
         const student = req.params.student;
 
-        getStudentCode(urlStudentRep, student)
+        getStudentCode(student)
         .then((codigo)=> {
-            const urlUserLogin = 'https://omegaup.com/api/user/login?';
             const usernameOrEmail = 'd.a.alvarez.ramirez';
             const password = 'qwertypoiu';
             
-            startSessionWithOmegaUp(urlUserLogin, usernameOrEmail, password)
+            startSessionOnOmegaUp(usernameOrEmail, password)
             .then((json)=> {
-                const urlRunCreate = 'https://omegaup.com/api/run/create?';
-                const problemAlias = 'MCD-Euclides';
-                const language = 'c11-gcc';
+                const problemAlias = 'Fibonacci-Primo'; //'MCD-Euclides'
+                const language = 'java'; //'c11-gcc'
                 const source = codigo;
                 const userToken = json.auth_token;
-    
-                testingWithOmegaUp(urlRunCreate, problemAlias, language, source, userToken)
+
+                testingWithOmegaUp(problemAlias, language, source, userToken)
                 .then((json)=> {
                     return res.status(200).send({
-                        json
+                        score: json.score
                     });
                 });
             });
@@ -58,7 +55,10 @@ var controller = {
 
 // CONSULTAS A GITHUB Y A OMEGAUP
 
-function getStudentCode(urlStudentRep, student) {
+// GITHUB
+function getStudentCode(student) {
+    const urlStudentRep = "https://api.github.com/repos/servicioSocialUady/sample-assignment-individual-";
+
     return fetch(urlStudentRep + student + "/contents").then((res)=> {
         return res.json();
     }).then((json)=> {
@@ -79,7 +79,10 @@ function getStudentCode(urlStudentRep, student) {
     });
 }
 
-function startSessionWithOmegaUp(urlUserLogin, usernameOrEmail, password) {
+// OMEGAUP
+function startSessionOnOmegaUp(usernameOrEmail, password) {
+    const urlUserLogin = 'https://omegaup.com/api/user/login?';
+
     return fetch(urlUserLogin
         +'usernameOrEmail='+ usernameOrEmail 
         +'&password='+ password, {
@@ -91,18 +94,54 @@ function startSessionWithOmegaUp(urlUserLogin, usernameOrEmail, password) {
     });
  }
 
-function testingWithOmegaUp(urlRunCreate, problemAlias, language, source, userToken) {
+function testingWithOmegaUp(problemAlias, language, source, userToken) {
+    const urlRunCreate = 'https://omegaup.com/api/run/create?';
+    //source = source.replace(/\&/g, "%26"); // Error con el caracter &, solución temporal
+    //source = source.replace(/\+/g, "%2B"); // Error con el caracter +, solución temporal
+
+    let sourceURI = encodeURIComponent(source); // Esta función reemplaza todos los caracteres reservados
+
+    console.log(sourceURI);
+
     return fetch(urlRunCreate
-                +'problem_alias='+ problemAlias
-                +'&language='+ language
-                +'&source='+ source
-                +'&ouat='+ userToken, {
+        +'problem_alias='+ problemAlias
+        +'&language='+ language
+        +'&source='+ sourceURI
+        +'&ouat='+ userToken, {
+    method: 'post',
+    headers: { 'Content-Type': 'application/json' },
+    })
+    .then((response)=> {
+        return response.json();
+    }).then(()=> { //response
+        //return response.json();
+        const urlProblemDetails = 'https://omegaup.com/api/problem/details?problem_alias=' + problemAlias + '&ouat='+ userToken;
+        return fetch(urlProblemDetails, {
+                method: 'post',
+                headers: { 'Content-Type': 'application/json' },
+        })
+        .then((response)=> {
+            return response.json();
+        });
+    });
+
+    /*
+    const body = {
+        problem_alias: problemAliasR,
+        language: languageR,
+        source: sourceR,
+        ouat: userTokenR
+    }
+
+    return fetch(urlRunCreate, {
             method: 'post',
+            body: JSON.stringify(body),
             headers: { 'Content-Type': 'application/json' },
     })
     .then((response)=> {
         return response.json();
     });
+    */
 }
 
 module.exports = controller;
