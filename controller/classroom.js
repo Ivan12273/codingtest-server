@@ -77,6 +77,41 @@ var controller = {
                 });
             });
         });
+    },
+
+    createProblem: function(req, res) {
+        let params = req.body;        
+
+        const authorUsername = params.authorUsername;
+        const title = params.title;
+        const alias = params.alias;
+        const source = params.source;
+        const isPublic = params.isPublic;
+        const validator = params.validator;
+        const timeLimit = params.timeLimit;
+        // const memoryLimit = params.memoryLimit;      //parece ser opcional
+        // const order = params.order;                  //parece ser opcional
+        const problemContents = params.problemContents;
+
+        console.log(params);                
+
+        const usernameOrEmail = 'd.a.alvarez.ramirez';
+        const password = 'qwertypoiu';
+        
+        startSessionOnOmegaUp(usernameOrEmail, password)
+        .then((json)=> {
+            const userToken = json.auth_token;
+
+            createProblemOnOmegaUp(authorUsername, title, alias, source, isPublic, validator, timeLimit, problemContents, userToken)
+            .then((json)=> {
+                
+                return res.status(200).send({
+                    status: json.status,
+                    uploaded_files: json.uploaded_files                    
+                });
+                console.log('sended');
+            });
+        });                
     }
 };
 
@@ -156,6 +191,30 @@ function userResult(problemAlias, userToken) {
     return fetch(urlProblemDetails, {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
+    })
+    .then((response)=> {
+        return response.json();
+    });
+}
+
+
+function createProblemOnOmegaUp(authorUsername, title, alias, source, isPublic, validator, timeLimit, problemContents, userToken){
+    const urlProblemCreate = 'https://omegaup.com/api/problem/create?';
+
+    return fetch(urlProblemCreate
+        + 'author_username=' + authorUsername
+        + '&title=' + title
+        + '&alias=' + alias
+        + '&source=' + source
+        + '&public=' + isPublic
+        + '&validator=' + validator
+        + '&time_limit=' + timeLimit
+        // + '&memory_limit=' + memoryLimit             //parece ser opcional
+        // + '&order=' + order                          //parece ser opcional
+        + '&problem_contents=' + problemContents
+        + '&ouat=' + userToken, {
+        method: 'post',
+        headers: { 'Content-Type': 'application/json' },        
     })
     .then((response)=> {
         return response.json();

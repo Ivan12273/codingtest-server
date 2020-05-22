@@ -2,6 +2,7 @@
 
 var express = require('express');
 var bodyParser = require('body-parser');
+var fileupload = require('express-fileupload');
 var cors = require('cors')
 
 var app = express();
@@ -18,6 +19,7 @@ app.use(express.json({
     type: ['application/json', 'text/plain']
 }));
 app.use(cors());
+app.use(fileupload());
 
 // CORS
 app.use((req, res, next) => {
