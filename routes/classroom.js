@@ -6,6 +6,7 @@ var ClassroomController = require('../controller/classroom');
 var router = express.Router();
 
 router.get('/get-all-results', ClassroomController.getAllResults);
-router.get('/validate-code', ClassroomController.validateCode);
+router.get('/problem/:student/:organization/:assignment', ClassroomController.problem);
+router.get('/calification/:organization/:assignment/:student/:problemAlias/:language/:executionTime', ClassroomController.calification);
 
 module.exports = router;
