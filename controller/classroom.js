@@ -27,9 +27,24 @@ var controller = {
 
             });
     },
+ 
+    problem: function(req, res) {
+        let params = req.params;
 
-    validateCode: function(req, res) {
-        let params = req.body;
+        const student = params.student;
+        const organization = params.organization;
+        const assignment = params.assignment;
+
+        getProblemInstructions(student, organization, assignment)
+        .then((response)=> {
+            return res.status(200).send({
+                instructions: response
+            });
+        });
+    },
+    
+    calification: function(req, res) {
+        let params = req.params; //cambiarlo a parametros
 
         const organization = params.organization;
         const assignment = params.assignment;
@@ -108,16 +123,16 @@ var controller = {
 function getStudentCode(student, organization, assignment) {
     assignment = assignment.toLowerCase();
     assignment = assignment.replace(/\ /g, '-'); 
-    const urlStudentRep = 'https://api.github.com/repos/'+ organization + '/' + assignment + '-';
+    const urlStudentRep = 'https://api.github.com/repos/' + organization + '/' + assignment + '-';
 
-    return fetch(urlStudentRep + student + "/contents").then((res)=> {
+    return fetch(urlStudentRep + student + '/contents').then((res)=> {
         return res.json();
     }).then((json)=> {
         let urlStudentGit;
         let extension;
         json.forEach((element) => {
             extension = element.name.split('.').pop();
-            if(extension == "java") { // language
+            if(extension == 'java') { // language
                 urlStudentGit = element.git_url
             }
         });
@@ -128,6 +143,20 @@ function getStudentCode(student, organization, assignment) {
         let codigo = atob(response.content);
         return codigo;
     });
+}
+
+function getProblemInstructions(user, organization, assignment) {
+    assignment = assignment.toLowerCase();
+    assignment = assignment.replace(/\ /g, '-');
+    const urlProblemReadme = 'https://api.github.com/repos/' + organization + '/' + assignment + '-';
+
+    return fetch(urlProblemReadme + user + '/contents/README.md').then((res)=> {
+        return res.json();
+    }).then((response)=> {
+        let instructions = atob(response.content);
+        return instructions;
+    });
+
 }
 
 // OMEGAUP
