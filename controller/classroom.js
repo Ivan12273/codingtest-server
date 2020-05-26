@@ -2,6 +2,9 @@
 
 const fetch = require('node-fetch');
 const atob = require('atob');
+var multer = require('multer');
+
+var FormData = require('form-data');
 
 var controller = {
 
@@ -65,7 +68,8 @@ var controller = {
     },
 
     createProblem: function(req, res) {
-        let params = req.body;        
+        let params = req.body;         
+        var upload = multer().single('problemContents');       
 
         const authorUsername = params.authorUsername;
         const title = params.title;
@@ -93,8 +97,7 @@ var controller = {
                 return res.status(200).send({
                     status: json.status,
                     uploaded_files: json.uploaded_files                    
-                });
-                console.log('sended');
+                });                
             });
         });                
     }
@@ -170,26 +173,47 @@ function userResult(problemAlias, userToken) {
 
 
 function createProblemOnOmegaUp(authorUsername, title, alias, source, isPublic, validator, timeLimit, problemContents, userToken){
-    const urlProblemCreate = 'https://omegaup.com/api/problem/create?';
+    const urlProblemCreate = 'https://omegaup.com/api/problem/create';    
 
-    return fetch(urlProblemCreate
-        + 'author_username=' + authorUsername
-        + '&title=' + title
-        + '&alias=' + alias
-        + '&source=' + source
-        + '&public=' + isPublic
-        + '&validator=' + validator
-        + '&time_limit=' + timeLimit
-        // + '&memory_limit=' + memoryLimit             //parece ser opcional
-        // + '&order=' + order                          //parece ser opcional
-        + '&problem_contents=' + problemContents
-        + '&ouat=' + userToken, {
+    var formData = new FormData();
+
+    formData.append('author_username', authorUsername);    
+    formData.append('title', title);    
+    formData.append('problem_alias', alias);    
+    formData.append('source', source);    
+    formData.append('public', isPublic);    
+    formData.append('validator', validator);    
+    formData.append('time_limit', timeLimit);    
+    formData.append('problem_contents', problemContents);
+    formData.append('ouat', userToken);
+
+    return fetch(urlProblemCreate, {
+        headers: { 'Content-Type': 'application/json'},
         method: 'post',
-        headers: { 'Content-Type': 'application/json' },        
+        body: formData,
     })
-    .then((response)=> {
+    .then((response) => {
         return response.json();
     });
+
+    // return fetch(urlProblemCreate
+    //     + 'author_username=' + authorUsername
+    //     + '&title=' + title
+    //     + '&alias=' + alias
+    //     + '&source=' + source
+    //     + '&public=' + isPublic
+    //     + '&validator=' + validator
+    //     + '&time_limit=' + timeLimit
+    //     // + '&memory_limit=' + memoryLimit             //parece ser opcional
+    //     // + '&order=' + order                          //parece ser opcional
+    //     + '&problem_contents=' + problemContents
+    //     + '&ouat=' + userToken, {
+    //     method: 'post',        
+    //     headers: { 'Content-Type': 'application/json' },        
+    // })
+    // .then((response)=> {
+    //     return response.json();
+    // });
 }
 
 module.exports = controller;
