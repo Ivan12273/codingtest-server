@@ -1,5 +1,6 @@
 'use strict'
 
+const { URLSearchParams } = require('url');
 const fetch = require('node-fetch');
 const atob = require('atob');
 
@@ -23,21 +24,6 @@ var controller = {
                 });
 
             });
-    },
- 
-    problem: function(req, res) {
-        let params = req.params;
-
-        const student = params.student;
-        const organization = params.organization;
-        const assignment = params.assignment;
-
-        getProblemInstructions(student, organization, assignment)
-        .then((response)=> {
-            return res.status(200).send({
-                instructions: response
-            });
-        });
     },
     
     calification: function(req, res) {
@@ -79,6 +65,21 @@ var controller = {
         });
     },
 
+    problem: function(req, res) {
+        let params = req.params;
+
+        const student = params.student;
+        const organization = params.organization;
+        const assignment = params.assignment;
+
+        getProblemInstructions(student, organization, assignment)
+        .then((response)=> {
+            return res.status(200).send({
+                instructions: response
+            });
+        });
+    },
+
     createProblem: function(req, res) {
         let params = req.body;        
 
@@ -91,9 +92,9 @@ var controller = {
         const timeLimit = params.timeLimit;
         // const memoryLimit = params.memoryLimit;      //parece ser opcional
         // const order = params.order;                  //parece ser opcional
-        const problemContents = params.problemContents;
+        const problemContents = req.files.problemContents;
 
-        console.log(params);                
+        console.log(req.files.problemContents);                
 
         const usernameOrEmail = 'd.a.alvarez.ramirez';
         const password = 'qwertypoiu';
@@ -158,13 +159,15 @@ function getProblemInstructions(user, organization, assignment) {
 
 // OMEGAUP
 function startSessionOnOmegaUp(usernameOrEmail, password) {
-    const urlUserLogin = 'https://omegaup.com/api/user/login?';
+    const urlUserLogin = 'https://omegaup.com/api/user/login';
+    
+    const params = new URLSearchParams();
+    params.append('usernameOrEmail', usernameOrEmail);
+    params.append('password', password);
 
-    return fetch(urlUserLogin
-        +'usernameOrEmail='+ usernameOrEmail 
-        +'&password='+ password, {
+    return fetch(urlUserLogin, {
         method: 'post',
-        headers: { 'Content-Type': 'application/json' },
+        body: params,
     })
     .then((res)=> {
         return res.json();
@@ -172,25 +175,31 @@ function startSessionOnOmegaUp(usernameOrEmail, password) {
  }
 
 function testingWithOmegaUp(problemAlias, language, source, userToken) {
-    const urlRunCreate = 'https://omegaup.com/api/run/create?';
-    let sourceURI = encodeURIComponent(source); 
+    const urlRunCreate = 'https://omegaup.com/api/run/create';
+    // let sourceURI = encodeURIComponent(source); 
+    
+    const params = new URLSearchParams();
+    params.append('problem_alias', problemAlias);
+    params.append('language', language);
+    params.append('source', source);
+    params.append('ouat', userToken);
 
-    return fetch(urlRunCreate
-        +'problem_alias='+ problemAlias
-        +'&language='+ language
-        +'&source='+ sourceURI
-        +'&ouat='+ userToken, {
+    return fetch(urlRunCreate, {
         method: 'post',
-        headers: { 'Content-Type': 'application/json' },
+        body: params,
     });
 }
 
 function userResult(problemAlias, userToken) {
-    const urlProblemDetails = 'https://omegaup.com/api/problem/details?problem_alias=' + problemAlias + '&ouat='+ userToken;
+    const urlProblemDetails = 'https://omegaup.com/api/problem/details';
+
+    const params = new URLSearchParams();
+    params.append('problem_alias', problemAlias);
+    params.append('ouat', userToken);
 
     return fetch(urlProblemDetails, {
             method: 'post',
-            headers: { 'Content-Type': 'application/json' },
+            body: params,
     })
     .then((response)=> {
         return response.json();
