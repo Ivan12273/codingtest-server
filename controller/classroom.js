@@ -2,7 +2,9 @@
 
 const fetch = require('node-fetch');
 const atob = require('atob');
-var multer = require('multer');
+const fs = require('fs');                        //dependencia de prueba
+//var fileupload = require('express-fileupload');
+
 
 var FormData = require('form-data');
 
@@ -83,8 +85,7 @@ var controller = {
     },
 
     createProblem: function(req, res) {
-        let params = req.body;         
-        var upload = multer().single('problemContents');       
+        const params = req.body;
 
         const authorUsername = params.authorUsername;
         const title = params.title;
@@ -95,25 +96,27 @@ var controller = {
         const timeLimit = params.timeLimit;
         // const memoryLimit = params.memoryLimit;      //parece ser opcional
         // const order = params.order;                  //parece ser opcional
-        const problemContents = params.problemContents;
-
-        console.log(params);                
+        const problemContents = req.file;                                                                                 
 
         const usernameOrEmail = 'd.a.alvarez.ramirez';
-        const password = 'qwertypoiu';
-        
+        const password = 'qwertypoiu';                
+
         startSessionOnOmegaUp(usernameOrEmail, password)
         .then((json)=> {
             const userToken = json.auth_token;
+            
+            async function waitFunction(){
 
-            createProblemOnOmegaUp(authorUsername, title, alias, source, isPublic, validator, timeLimit, problemContents, userToken)
-            .then((json)=> {
-                
-                return res.status(200).send({
-                    status: json.status,
-                    uploaded_files: json.uploaded_files                    
-                });                
-            });
+                createProblemOnOmegaUp(authorUsername, title, alias, source, isPublic, validator, timeLimit, problemContents, userToken)
+                .then((json)=> {                                
+                    
+                    return res.status(200).send({
+                        status: json.status,
+                        uploaded_files: json.uploaded_files                    
+                    });                
+                });
+            }
+            setTimeout(waitFunction, 2000);               
         });                
     }
 };
@@ -202,9 +205,9 @@ function userResult(problemAlias, userToken) {
 
 
 function createProblemOnOmegaUp(authorUsername, title, alias, source, isPublic, validator, timeLimit, problemContents, userToken){
-    const urlProblemCreate = 'https://omegaup.com/api/problem/create';    
+    const urlProblemCreate = 'https://omegaup.com/api/problem/create';
 
-    var formData = new FormData();
+    var formData = new FormData();          
 
     formData.append('author_username', authorUsername);    
     formData.append('title', title);    
@@ -214,35 +217,19 @@ function createProblemOnOmegaUp(authorUsername, title, alias, source, isPublic, 
     formData.append('validator', validator);    
     formData.append('time_limit', timeLimit);    
     formData.append('problem_contents', problemContents);
+    //formData.append('problem_contents', fs.createReadStream('/uploads/' + problemContents.filename + '.zip'));
     formData.append('ouat', userToken);
 
-    return fetch(urlProblemCreate, {
-        headers: { 'Content-Type': 'application/json'},
-        method: 'post',
-        body: formData,
+    return fetch(urlProblemCreate ,{                
+        method: 'post', 
+        body: formData,        
     })
-    .then((response) => {
-        return response.json();
-    });
-
-    // return fetch(urlProblemCreate
-    //     + 'author_username=' + authorUsername
-    //     + '&title=' + title
-    //     + '&alias=' + alias
-    //     + '&source=' + source
-    //     + '&public=' + isPublic
-    //     + '&validator=' + validator
-    //     + '&time_limit=' + timeLimit
-    //     // + '&memory_limit=' + memoryLimit             //parece ser opcional
-    //     // + '&order=' + order                          //parece ser opcional
-    //     + '&problem_contents=' + problemContents
-    //     + '&ouat=' + userToken, {
-    //     method: 'post',        
-    //     headers: { 'Content-Type': 'application/json' },        
-    // })
-    // .then((response)=> {
-    //     return response.json();
-    // });
+    .then((response) => {        
+        return response.json();                
+    })
+    .catch(function(error) {
+        console.log('Hubo un problema con la petición Fetch:' + error.message);
+    });    
 }
 
 module.exports = controller;
