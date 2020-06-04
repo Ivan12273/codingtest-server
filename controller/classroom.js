@@ -3,6 +3,11 @@
 const { URLSearchParams } = require('url');
 const fetch = require('node-fetch');
 const atob = require('atob');
+const fs = require('fs');                        //dependencia de prueba
+//var fileupload = require('express-fileupload');
+
+
+var FormData = require('form-data');
 
 var controller = {
 
@@ -81,7 +86,7 @@ var controller = {
     },
 
     createProblem: function(req, res) {
-        let params = req.body;        
+        const params = req.body;
 
         const authorUsername = params.authorUsername;
         const title = params.title;
@@ -95,23 +100,27 @@ var controller = {
         const problemContents = req.files.problemContents;
 
         console.log(req.files.problemContents);                
+        const problemContents = req.file;                                                                                 
 
         const usernameOrEmail = 'd.a.alvarez.ramirez';
-        const password = 'qwertypoiu';
-        
+        const password = 'qwertypoiu';                
+
         startSessionOnOmegaUp(usernameOrEmail, password)
         .then((json)=> {
             const userToken = json.auth_token;
+            
+            async function waitFunction(){
 
-            createProblemOnOmegaUp(authorUsername, title, alias, source, isPublic, validator, timeLimit, problemContents, userToken)
-            .then((json)=> {
-                
-                return res.status(200).send({
-                    status: json.status,
-                    uploaded_files: json.uploaded_files                    
+                createProblemOnOmegaUp(authorUsername, title, alias, source, isPublic, validator, timeLimit, problemContents, userToken)
+                .then((json)=> {                                
+                    
+                    return res.status(200).send({
+                        status: json.status,
+                        uploaded_files: json.uploaded_files                    
+                    });                
                 });
-                console.log('sended');
-            });
+            }
+            setTimeout(waitFunction, 2000);               
         });                
     }
 };
@@ -208,26 +217,31 @@ function userResult(problemAlias, userToken) {
 
 
 function createProblemOnOmegaUp(authorUsername, title, alias, source, isPublic, validator, timeLimit, problemContents, userToken){
-    const urlProblemCreate = 'https://omegaup.com/api/problem/create?';
+    const urlProblemCreate = 'https://omegaup.com/api/problem/create';
 
-    return fetch(urlProblemCreate
-        + 'author_username=' + authorUsername
-        + '&title=' + title
-        + '&alias=' + alias
-        + '&source=' + source
-        + '&public=' + isPublic
-        + '&validator=' + validator
-        + '&time_limit=' + timeLimit
-        // + '&memory_limit=' + memoryLimit             //parece ser opcional
-        // + '&order=' + order                          //parece ser opcional
-        + '&problem_contents=' + problemContents
-        + '&ouat=' + userToken, {
-        method: 'post',
-        headers: { 'Content-Type': 'application/json' },        
+    var formData = new FormData();          
+
+    formData.append('author_username', authorUsername);    
+    formData.append('title', title);    
+    formData.append('problem_alias', alias);    
+    formData.append('source', source);    
+    formData.append('public', isPublic);    
+    formData.append('validator', validator);    
+    formData.append('time_limit', timeLimit);    
+    formData.append('problem_contents', problemContents);
+    //formData.append('problem_contents', fs.createReadStream('/uploads/' + problemContents.filename + '.zip'));
+    formData.append('ouat', userToken);
+
+    return fetch(urlProblemCreate ,{                
+        method: 'post', 
+        body: formData,        
     })
-    .then((response)=> {
-        return response.json();
-    });
+    .then((response) => {        
+        return response.json();                
+    })
+    .catch(function(error) {
+        console.log('Hubo un problema con la petición Fetch:' + error.message);
+    });    
 }
 
 module.exports = controller;
