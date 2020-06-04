@@ -90,37 +90,32 @@ var controller = {
 
         const authorUsername = params.authorUsername;
         const title = params.title;
-        const alias = params.alias;
+        const alias = params.problem_alias;
         const source = params.source;
         const isPublic = params.isPublic;
         const validator = params.validator;
         const timeLimit = params.timeLimit;
         // const memoryLimit = params.memoryLimit;      //parece ser opcional
         // const order = params.order;                  //parece ser opcional
-        const problemContents = req.files.problemContents;
+        const problemContents = req.file;
 
-        console.log(req.files.problemContents);                
-        const problemContents = req.file;                                                                                 
+        console.log(req.file);                
+        //const problemContents = req.file;                                                                                 
 
         const usernameOrEmail = 'd.a.alvarez.ramirez';
-        const password = 'qwertypoiu';                
-
+        const password = 'qwertypoiu';
+        
         startSessionOnOmegaUp(usernameOrEmail, password)
         .then((json)=> {
             const userToken = json.auth_token;
             
-            async function waitFunction(){
-
                 createProblemOnOmegaUp(authorUsername, title, alias, source, isPublic, validator, timeLimit, problemContents, userToken)
                 .then((json)=> {                                
                     
                     return res.status(200).send({
-                        status: json.status,
-                        uploaded_files: json.uploaded_files                    
+                        json                   
                     });                
-                });
-            }
-            setTimeout(waitFunction, 2000);               
+                });      
         });                
     }
 };
@@ -219,22 +214,70 @@ function userResult(problemAlias, userToken) {
 function createProblemOnOmegaUp(authorUsername, title, alias, source, isPublic, validator, timeLimit, problemContents, userToken){
     const urlProblemCreate = 'https://omegaup.com/api/problem/create';
 
-    var formData = new FormData();          
+    var formdata = new URLSearchParams();
 
+    formdata.append("author_username", authorUsername);
+    formdata.append("title", title);
+    formdata.append("problem_alias", "adadsa");
+    formdata.append("source", source);
+    formdata.append("public", isPublic);
+    formdata.append("validator", validator);
+    formdata.append("time_limit", timeLimit);
+    formdata.append("problem_contents", problemContents, "uploads/1dbac6ea4989f2366ff972a9118f196e");
+    formdata.append("ouat", userToken);
+    
+    console.log(userToken);
+
+    return fetch(urlProblemCreate, {
+        method: 'post',
+        headers: {
+            'Content-Type': 'multipart/form-data',
+            'auth_token': userToken,
+            'Cookie': 'ouat=' + userToken
+        },
+        body: formdata,
+    })
+    .then((response)=> {
+        return response.json();
+    });
+
+    /*
+    var requestOptions = {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'multipart/form-data',
+          'auth_token': userToken,
+          'Cookie': 'ouat=' + userToken
+      },
+      body: formdata,
+      redirect: 'follow'
+    };
+    
+    return fetch(urlProblemCreate, requestOptions)
+    .then(response => {
+        return response.json();
+    });
+    */
+
+    /*
     formData.append('author_username', authorUsername);    
     formData.append('title', title);    
     formData.append('problem_alias', alias);    
     formData.append('source', source);    
     formData.append('public', isPublic);    
     formData.append('validator', validator);    
-    formData.append('time_limit', timeLimit);    
-    formData.append('problem_contents', problemContents);
+    formData.append('time_limit', timeLimit); 
+    formdata.append("problem_contents", problemContents, "uploads/" + problemContents.filename);   
+    //formData.append('problem_contents', problemContents);
     //formData.append('problem_contents', fs.createReadStream('/uploads/' + problemContents.filename + '.zip'));
     formData.append('ouat', userToken);
 
     return fetch(urlProblemCreate ,{                
         method: 'post', 
-        body: formData,        
+        body: formData,   
+        headers:{
+            'Content-Type': 'application/json'
+        }     
     })
     .then((response) => {        
         return response.json();                
@@ -242,6 +285,7 @@ function createProblemOnOmegaUp(authorUsername, title, alias, source, isPublic, 
     .catch(function(error) {
         console.log('Hubo un problema con la petición Fetch:' + error.message);
     });    
+    */
 }
 
 module.exports = controller;
