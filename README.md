@@ -37,6 +37,30 @@ Una vez encendido el servidor, puede utilizarse un programa para realizar las pe
 
 ### GET ```/problem/:student/:organization/:assignment```
 
+#### Descripción
+
+#### Privilegios
+
+#### Parámetros
+
+| Parámetro | Tipo   | Descripción |
+| ------ |---------| ------:|
+| ```student``` | String | 99€    |
+| ```organization```  | String | 199€   |
+| ```assignment``` | String | 399€   |
+
 ### GET ```/calification/:organization/:assignment/:student/:problemAlias/:language/:executionTime```
 
+#### Descripción
+
+#### Privilegios
+
+#### Parámetros
+
 ### POST ```/create-problem```
+
+#### Descripción
+
+#### Privilegios
+
+#### Parámetros
