@@ -11,5 +11,11 @@ Este sistema utiliza las siguientes herramientas:
 
 ## Instalación
 
-La aplicación está hecha en **[NodeJS](https://nodejs.org/es/)**.
-Para utilizar la aplicación es necesario tener instalado MongoDB
+La aplicación está hecha en **[NodeJS](https://nodejs.org/es/)**. También es necesario instalar **[MongoDB](https://docs.mongodb.com/manual/)** 
+
+### Comandos
+Para correr el servidor de **Coding test**, se entra a la consola del ambiente de desarrollo y se introduce el siguiente comando: 
+
+```
+npm start
+```
