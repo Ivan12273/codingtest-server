@@ -30,6 +30,7 @@ Una vez encendido el servidor, puede utilizarse un programa para realizar las pe
 ### GET ```/get-all-results```
 
 #### Descripción
+Se obtienen todos los resultados de los alumnos de una clase en GitHub Classroom.
 
 #### Privilegios
 
@@ -38,11 +39,12 @@ Una vez encendido el servidor, puede utilizarse un programa para realizar las pe
 ### GET ```/problem/:student/:organization/:assignment```
 
 #### Descripción
+Obtiene los detalles de la tarea asignada.
 
 #### Privilegios
+El usuario necesita estar loggeado.
 
 #### Parámetros
-
 | Parámetro | Tipo   | Descripción |
 | ------ |---------| :------|
 | ```student``` | String | Nombre del estudiante registrado en GitHub Classroom|
@@ -52,12 +54,12 @@ Una vez encendido el servidor, puede utilizarse un programa para realizar las pe
 ### GET ```/calification/:organization/:assignment/:student/:problemAlias/:language/:executionTime```
 
 #### Descripción
+Obtiene la última calificación obtenida de la 
 
 #### Privilegios
 El usuario necesita estar loggeado.
 
 #### Parámetros
-
 | Parámetro | Tipo   | Descripción |
 | ------ |---------| :------|
 | ```organization``` | String | Nombre del estudiante registrado en GitHub Classroom|
@@ -70,7 +72,9 @@ El usuario necesita estar loggeado.
 ### POST ```/create-problem```
 
 #### Descripción
+Crea un problema en la plataforma omegaUp.
 
 #### Privilegios
+El usuario necesita estar loggeado.
 
 #### Parámetros
