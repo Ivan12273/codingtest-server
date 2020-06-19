@@ -45,11 +45,14 @@ El usuario necesita estar loggeado.
 #### Parámetros
 | Parámetro | Tipo   | Descripción |
 | ------ |---------| :------|
-| ```student``` | String | Nombre del estudiante registrado en GitHub Classroom. |
-| ```organization```  | String | Nombre de la organización registrada en GitHub Classroom. |
-| ```assignment``` | String | Nombre de la tarea registrada en GitHub Classroom. |
+| ```student``` | string | Nombre del estudiante registrado en GitHub Classroom. |
+| ```organization```  | string | Nombre de la organización registrada en GitHub Classroom. |
+| ```assignment``` | string | Nombre de la tarea registrada en GitHub Classroom. |
 
-#### Parámetros
+#### Regresa
+| Parámetro | Tipo   | Descripción |
+| ------ |---------| :------|
+| ```instructions``` | string | Instrucciones del tarea asignada. |
 
 
 ### GET ```/calification/:organization/:assignment/:student/:problemAlias/:language/:executionTime```
@@ -63,15 +66,17 @@ El usuario necesita estar loggeado.
 #### Parámetros
 | Parámetro | Tipo   | Descripción |
 | ------ |---------| :------|
-| ```organization``` | String | Nombre de la organización registrada en GitHub Classroom. |
-| ```assignment```  | String | Nombre de la tarea registrada en la clase de GitHub Classroom. |
-| ```student``` | String | Nombre del estudiante registrado en GitHub Classroom. |
-| ```problemAlias``` | String | Nombre del problema en omegaUp. |
-| ```language``` | String | Lenguaje en el que fue hecho el código de la tarea. |
+| ```organization``` | string | Nombre de la organización registrada en GitHub Classroom. |
+| ```assignment```  | string | Nombre de la tarea registrada en la clase de GitHub Classroom. |
+| ```student``` | string | Nombre del estudiante registrado en GitHub Classroom. |
+| ```problemAlias``` | string | Nombre del problema en omegaUp. |
+| ```language``` | string | Lenguaje en el que fue hecho el código de la tarea. |
 | ```executionTime``` | int | Tiempo de demora máximo para ser ejecutado el código. |
 
 #### Regresa
-
+| Parámetro | Tipo   | Descripción |
+| ------ |---------| :------|
+| ```score``` | double | Puntuación obtenida de la tarea enviada. |
 
 ### POST ```/create-problem```
 
@@ -82,3 +87,7 @@ Crea un problema en la plataforma omegaUp.
 El usuario necesita estar loggeado.
 
 #### Parámetros
+| Parámetro | Tipo   | Descripción |
+| ------ |---------| :------|
+| ```status``` | String | Estado obtenido de la petición. |
+| ```uploaded_files```  | String | Arreglo de los archivos que fueron enviados. |
