@@ -89,5 +89,17 @@ El usuario necesita estar loggeado.
 #### Parámetros
 | Parámetro | Tipo   | Descripción |
 | ------ |---------| :------|
+| ```authorUsername``` | String | Estado obtenido de la petición. |
+| ```title```  | String | Arreglo de los archivos que fueron enviados. |
+| ```alias``` | String | Estado obtenido de la petición. |
+| ```source```  | String | Arreglo de los archivos que fueron enviados. |
+| ```isPublic``` | String | Estado obtenido de la petición. |
+| ```validator```  | String | Arreglo de los archivos que fueron enviados. |
+| ```timeLimit``` | String | Estado obtenido de la petición. |
+| ```problemContents```  | String | Arreglo de los archivos que fueron enviados. |
+
+#### Regresa
+| Parámetro | Tipo   | Descripción |
+| ------ |---------| :------|
 | ```status``` | String | Estado obtenido de la petición. |
 | ```uploaded_files```  | String | Arreglo de los archivos que fueron enviados. |
