@@ -34,8 +34,6 @@ Se obtienen todos los resultados de los alumnos de una clase en GitHub Classroom
 
 #### Privilegios
 
-#### Parámetros
-
 ### GET ```/problem/:student/:organization/:assignment```
 
 #### Descripción
@@ -47,9 +45,12 @@ El usuario necesita estar loggeado.
 #### Parámetros
 | Parámetro | Tipo   | Descripción |
 | ------ |---------| :------|
-| ```student``` | String | Nombre del estudiante registrado en GitHub Classroom|
-| ```organization```  | String | Nombre de la organización registrada en GitHub Classroom |
-| ```assignment``` | String | Nombre de la tarea registrada en GitHub Classroom |
+| ```student``` | String | Nombre del estudiante registrado en GitHub Classroom. |
+| ```organization```  | String | Nombre de la organización registrada en GitHub Classroom. |
+| ```assignment``` | String | Nombre de la tarea registrada en GitHub Classroom. |
+
+#### Parámetros
+
 
 ### GET ```/calification/:organization/:assignment/:student/:problemAlias/:language/:executionTime```
 
@@ -62,12 +63,15 @@ El usuario necesita estar loggeado.
 #### Parámetros
 | Parámetro | Tipo   | Descripción |
 | ------ |---------| :------|
-| ```organization``` | String | Nombre del estudiante registrado en GitHub Classroom|
-| ```assignment```  | String | Nombre de la organización registrada en GitHub Classroom |
-| ```student``` | String | Nombre de la tarea registrada en GitHub Classroom |
-| ```problemAlias``` | String | Nombre de la tarea registrada en GitHub Classroom |
-| ```language``` | String | Nombre de la tarea registrada en GitHub Classroom |
-| ```executionTime``` | String | Nombre de la tarea registrada en GitHub Classroom |
+| ```organization``` | String | Nombre de la organización registrada en GitHub Classroom. |
+| ```assignment```  | String | Nombre de la tarea registrada en la clase de GitHub Classroom. |
+| ```student``` | String | Nombre del estudiante registrado en GitHub Classroom. |
+| ```problemAlias``` | String | Nombre del problema en omegaUp. |
+| ```language``` | String | Lenguaje en el que fue hecho el código de la tarea. |
+| ```executionTime``` | int | Tiempo de demora máximo para ser ejecutado el código. |
+
+#### Regresa
+
 
 ### POST ```/create-problem```
 
