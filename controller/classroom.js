@@ -3,36 +3,14 @@
 const { URLSearchParams } = require('url');
 const fetch = require('node-fetch');
 const atob = require('atob');
-const fs = require('fs');                        //dependencia de prueba
-//var fileupload = require('express-fileupload');
-
+const fs = require('fs');
 
 var FormData = require('form-data');
 
 var controller = {
-
-    getAllResults: function(req, res) {
-        var classroom = 'https://api.github.com/orgs/servicioSocialUady';
-        var apiReps = 'https://api.github.com/repos/servicioSocialUady/sample-assignment-individual-';
-
-        fetch(classroom + '/members').then((res)=> {
-                return res.json();
-            }).then((json)=>{
-                let students = new Array();
-                json.forEach(element => {
-                    students.push(element.login);
-                });
-                return students;
-            }).then((students)=>{
-                return res.status(200).send({
-                    students
-                });
-
-            });
-    },
-    
+   
     calification: function(req, res) {
-        let params = req.params; //cambiarlo a parametros
+        let params = req.params;
 
         const organization = params.organization;
         const assignment = params.assignment;
@@ -122,6 +100,8 @@ var controller = {
 
 // GITHUB
 // DETALLE IMPORTANTE: Tanto los repositorios como la visibilidad del usuario en la organización deben ser públicos 
+// Esto debe sustituirse para que entre sin necesidad de cambiar la visibilidad a público
+// Para mas información:
 function getStudentCode(student, organization, assignment) {
     assignment = assignment.toLowerCase();
     assignment = assignment.replace(/\ /g, '-'); 
@@ -240,52 +220,6 @@ function createProblemOnOmegaUp(authorUsername, title, alias, source, isPublic, 
     .then((response)=> {
         return response.json();
     });
-
-    /*
-    var requestOptions = {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'multipart/form-data',
-          'auth_token': userToken,
-          'Cookie': 'ouat=' + userToken
-      },
-      body: formdata,
-      redirect: 'follow'
-    };
-    
-    return fetch(urlProblemCreate, requestOptions)
-    .then(response => {
-        return response.json();
-    });
-    */
-
-    /*
-    formData.append('author_username', authorUsername);    
-    formData.append('title', title);    
-    formData.append('problem_alias', alias);    
-    formData.append('source', source);    
-    formData.append('public', isPublic);    
-    formData.append('validator', validator);    
-    formData.append('time_limit', timeLimit); 
-    formdata.append("problem_contents", problemContents, "uploads/" + problemContents.filename);   
-    //formData.append('problem_contents', problemContents);
-    //formData.append('problem_contents', fs.createReadStream('/uploads/' + problemContents.filename + '.zip'));
-    formData.append('ouat', userToken);
-
-    return fetch(urlProblemCreate ,{                
-        method: 'post', 
-        body: formData,   
-        headers:{
-            'Content-Type': 'application/json'
-        }     
-    })
-    .then((response) => {        
-        return response.json();                
-    })
-    .catch(function(error) {
-        console.log('Hubo un problema con la petición Fetch:' + error.message);
-    });    
-    */
 }
 
 module.exports = controller;
