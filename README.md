@@ -44,7 +44,7 @@ Una vez encendido el servidor, puede utilizarse un programa para realizar las pe
 #### Parámetros
 
 | Parámetro | Tipo   | Descripción |
-| ------ |---------| ------|
+| ------ |---------| :------|
 | ```student``` | String | Nopmbre del estudiante registrado en GitHub Classroom|
 | ```organization```  | String | Nombre de la organización registrada en GitHub Classroom |
 | ```assignment``` | String | Nombre de la tarea registrada en GitHub Classroom |
