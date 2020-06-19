@@ -23,16 +23,17 @@ Para correr el servidor de **Coding test**, se entra a la consola del ambiente d
 npm start
 ```
 
+Una vez encendido el servidor, puede utilizarse un programa para realizar las peticiones de la API (como **[Postman](https://www.postman.com)**) mostradas en la siguiente sección.
+
 ## API
 
-Una vez encendido el servidor, puede utilizarse un programa para realizar las peticiones de la API (como **[Postman](https://www.postman.com)**) y utilizar las siguientes peticiones disponibles de esta API:
-
 ### GET ```/get-all-results```
-**Descripción**
 
-**Privilegios**
+#### Descripción
 
-**Parámetros**
+#### Privilegios
+
+#### Parámetros
 
 ### GET ```/problem/:student/:organization/:assignment```
 
