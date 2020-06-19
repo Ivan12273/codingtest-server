@@ -10,3 +10,6 @@ Este sistema utiliza las siguientes herramientas:
 - **[GitHub Classroom](https://classroom.github.com)**: es una herramienta de gestión y manejo que utiliza la API de GitHub para habilitar el flujo de trabajo de GitHub para la educación. Esta herramienta es utilizada por el sistema para la obtención de los códigos del repositorio del maestro el cual contiene el código recibido de los estudiantes para luego ser calificados mediante el API de omegaUp.
 
 ## Instalación
+
+La aplicación está hecha en **[NodeJS](https://nodejs.org/es/)**.
+Para utilizar la aplicación es necesario tener instalado MongoDB
