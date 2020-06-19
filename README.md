@@ -45,7 +45,7 @@ Una vez encendido el servidor, puede utilizarse un programa para realizar las pe
 
 | Parámetro | Tipo   | Descripción |
 | ------ |---------| :------|
-| ```student``` | String | Nopmbre del estudiante registrado en GitHub Classroom|
+| ```student``` | String | Nombre del estudiante registrado en GitHub Classroom|
 | ```organization```  | String | Nombre de la organización registrada en GitHub Classroom |
 | ```assignment``` | String | Nombre de la tarea registrada en GitHub Classroom |
 
@@ -54,8 +54,18 @@ Una vez encendido el servidor, puede utilizarse un programa para realizar las pe
 #### Descripción
 
 #### Privilegios
+El usuario necesita estar loggeado.
 
 #### Parámetros
+
+| Parámetro | Tipo   | Descripción |
+| ------ |---------| :------|
+| ```organization``` | String | Nombre del estudiante registrado en GitHub Classroom|
+| ```assignment```  | String | Nombre de la organización registrada en GitHub Classroom |
+| ```student``` | String | Nombre de la tarea registrada en GitHub Classroom |
+| ```problemAlias``` | String | Nombre de la tarea registrada en GitHub Classroom |
+| ```language``` | String | Nombre de la tarea registrada en GitHub Classroom |
+| ```executionTime``` | String | Nombre de la tarea registrada en GitHub Classroom |
 
 ### POST ```/create-problem```
 
