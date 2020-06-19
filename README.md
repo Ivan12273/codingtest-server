@@ -27,13 +27,6 @@ Una vez encendido el servidor, puede utilizarse un programa para realizar las pe
 
 ## API
 
-### GET ```/get-all-results```
-
-#### Descripción
-Se obtienen todos los resultados de los alumnos de una clase en GitHub Classroom.
-
-#### Privilegios
-
 ### GET ```/problem/:student/:organization/:assignment```
 
 #### Descripción
@@ -89,14 +82,16 @@ El usuario necesita estar loggeado.
 #### Parámetros
 | Parámetro | Tipo   | Descripción |
 | ------ |---------| :------|
-| ```authorUsername``` | String | Estado obtenido de la petición. |
-| ```title```  | String | Arreglo de los archivos que fueron enviados. |
-| ```alias``` | String | Estado obtenido de la petición. |
-| ```source```  | String | Arreglo de los archivos que fueron enviados. |
-| ```isPublic``` | String | Estado obtenido de la petición. |
-| ```validator```  | String | Arreglo de los archivos que fueron enviados. |
-| ```timeLimit``` | String | Estado obtenido de la petición. |
-| ```problemContents```  | String | Arreglo de los archivos que fueron enviados. |
+| ```authorUsername``` | string | Estado obtenido de la petición. |
+| ```title```  | string | Arreglo de los archivos que fueron enviados. |
+| ```alias``` | string | Estado obtenido de la petición. |
+| ```source```  | string | Arreglo de los archivos que fueron enviados. |
+| ```isPublic``` | string | Estado obtenido de la petición. |
+| ```validator```  | string | Arreglo de los archivos que fueron enviados. |
+| ```timeLimit``` | int | Estado obtenido de la petición. |
+| ```problemContents```  | File | Archivo que contiene los detalles de problema. |
+
+*[Cómo escribir problemas para omegaUp](https://github.com/omegaup/omegaup/wiki/Cómo-escribir-problemas-para-Omegaup)
 
 #### Regresa
 | Parámetro | Tipo   | Descripción |
