@@ -26,6 +26,8 @@ npm start
 Una vez encendido el servidor, puede utilizarse un programa para realizar las peticiones de la API (como **[Postman](https://www.postman.com)**) mostradas en la siguiente sección.
 
 ## API
+Para el uso de la API es requerido poner de prefijo ```http://localhost:3700/classroom```. Por ejemplo:
+```http://localhost:3700/classroom/problem/:student/:organization/:assignment```
 
 ### GET ```/problem/:student/:organization/:assignment```
 
