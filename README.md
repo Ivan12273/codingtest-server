@@ -84,11 +84,11 @@ El usuario necesita estar loggeado.
 | ------ |---------| :------|
 | ```authorUsername``` | string | Nombre de usuario del autor del problema. |
 | ```title```  | string | Título del problema. |
-| ```alias``` | string | Alias del porblema. |
-| ```source```  | string | Fuente del problema (UVA, OMI, etc...). [Consulte API de omegaUp para mayor información](https://github.com/omegaup/omegaup/wiki/Problems-API)|
-| ```isPublic``` | string | Estado obtenido de la petición. |
-| ```validator```  | string | Arreglo de los archivos que fueron enviados. |
-| ```timeLimit``` | int | Estado obtenido de la petición. |
+| ```alias``` | string | Alias del problema. |
+| ```source```  | string | Fuente del problema (UVA, OMI, etc...).|
+| ```isPublic``` | string | ```0``` si el problema es privado. ```1``` si el problema es público. |
+| ```validator```  | string | Define cómo se compararán las salidas de los concursatnes con las salidas oficiales. Los valores pueden ser: ```literal```, ```token```, ```token-caseless```, o ```token-numeric```|
+| ```timeLimit``` | int | Límite de tiempo de ejecución para cada caso del problema en milisegundos. |
 | ```problemContents```  | File | Archivo que contiene los detalles de problema. [Cómo escribir problemas para omegaUp](https://github.com/omegaup/omegaup/wiki/Cómo-escribir-problemas-para-Omegaup)|
 
 #### Regresa
