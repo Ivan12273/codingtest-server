@@ -160,7 +160,6 @@ function startSessionOnOmegaUp(usernameOrEmail, password) {
 
 function testingWithOmegaUp(problemAlias, language, source, userToken) {
     const urlRunCreate = 'https://omegaup.com/api/run/create';
-    // let sourceURI = encodeURIComponent(source); 
     
     const params = new URLSearchParams();
     params.append('problem_alias', problemAlias);
@@ -198,7 +197,7 @@ function createProblemOnOmegaUp(authorUsername, title, alias, source, isPublic, 
 
     formdata.append("author_username", authorUsername);
     formdata.append("title", title);
-    formdata.append("problem_alias", "adadsa");
+    formdata.append("problem_alias", alias);
     formdata.append("source", source);
     formdata.append("public", isPublic);
     formdata.append("validator", validator);
