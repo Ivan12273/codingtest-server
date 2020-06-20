@@ -82,16 +82,14 @@ El usuario necesita estar loggeado.
 #### Parámetros
 | Parámetro | Tipo   | Descripción |
 | ------ |---------| :------|
-| ```authorUsername``` | string | Estado obtenido de la petición. |
-| ```title```  | string | Arreglo de los archivos que fueron enviados. |
-| ```alias``` | string | Estado obtenido de la petición. |
-| ```source```  | string | Arreglo de los archivos que fueron enviados. |
+| ```authorUsername``` | string | Nombre de usuario del autor del problema. |
+| ```title```  | string | Título del problema. |
+| ```alias``` | string | Alias del porblema. |
+| ```source```  | string | Fuente del problema (UVA, OMI, etc...). [Consulte API de omegaUp para mayor información](https://github.com/omegaup/omegaup/wiki/Problems-API)|
 | ```isPublic``` | string | Estado obtenido de la petición. |
 | ```validator```  | string | Arreglo de los archivos que fueron enviados. |
 | ```timeLimit``` | int | Estado obtenido de la petición. |
-| ```problemContents```  | File | Archivo que contiene los detalles de problema. |
-
-*[Cómo escribir problemas para omegaUp](https://github.com/omegaup/omegaup/wiki/Cómo-escribir-problemas-para-Omegaup)
+| ```problemContents```  | File | Archivo que contiene los detalles de problema. [Cómo escribir problemas para omegaUp](https://github.com/omegaup/omegaup/wiki/Cómo-escribir-problemas-para-Omegaup)|
 
 #### Regresa
 | Parámetro | Tipo   | Descripción |
