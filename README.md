@@ -13,7 +13,7 @@ Este sistema utiliza las siguientes herramientas:
 
 ### Instalación
 
-La aplicación está hecha en **[NodeJS](https://nodejs.org/es/)**. También es necesario instalar **[MongoDB](https://docs.mongodb.com/manual/)** 
+La aplicación está hecha en **![NodeJS](https://nodejs.org/es/)**. También es necesario instalar **[MongoDB](https://docs.mongodb.com/manual/)**.
 
 ### Comandos
 
@@ -98,3 +98,7 @@ El usuario necesita estar loggeado.
 | ------ |---------| :------|
 | ```status``` | String | Estado obtenido de la petición. |
 | ```uploaded_files```  | String | Arreglo de los archivos que fueron enviados. |
+
+## Continuación del proyecto
+
+Para ver más detalles sobre lo que consideró para 
