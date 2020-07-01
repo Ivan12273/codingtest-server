@@ -21,8 +21,8 @@ var controller = {
 
         getStudentCode(student, organization, assignment)
         .then((codigo)=> {
-            const usernameOrEmail = 'd.a.alvarez.ramirez';
-            const password = 'qwertypoiu';
+            const usernameOrEmail = '';
+            const password = '';
             
             startSessionOnOmegaUp(usernameOrEmail, password)
             .then((json)=> {
@@ -80,8 +80,8 @@ var controller = {
         console.log(req.file);                
         //const problemContents = req.file;                                                                                 
 
-        const usernameOrEmail = 'd.a.alvarez.ramirez';
-        const password = 'qwertypoiu';
+        const usernameOrEmail = '';
+        const password = '';
         
         startSessionOnOmegaUp(usernameOrEmail, password)
         .then((json)=> {
