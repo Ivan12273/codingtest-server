@@ -101,6 +101,10 @@ El usuario necesita estar loggeado.
 | ```status``` | String | Estado obtenido de la petición. |
 | ```uploaded_files```  | String | Arreglo de los archivos que fueron enviados. |
 
-## Continuación del proyecto
+## Continuación del proyecto (OnBoarding)
 
-Para ver más detalles puede revisar el [Reporte del proyecto](https://github.com/Ivan12273/codingtest-server/blob/master/Reporte%20del%20proyecto%20_Coding%20Test_.pdf)
+Uno de los problemas que se tuvo en el desarrollo del proyecto fue el de crear problemas para la plataforma en omegaUp desde nuestra API. El objetivo es poder enviar un archivo *.zip* a través de la API, lo cual se intentó realizar mediante un POST con tipo de contenido ```multipart/formdata```.
+
+Para ver más detalles puede revisar el [Reporte del proyecto](https://github.com/Ivan12273/codingtest-server/blob/master/Reporte%20del%20proyecto%20_Coding%20Test_.pdf).
+
+Para dudas y aclaraciones de los avances puede consultar a los desarrolladores por medio de los correos: d-alvarez1@live.com.mx y i
