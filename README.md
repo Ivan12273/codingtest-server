@@ -23,6 +23,8 @@ Para correr el servidor de **Coding test**, se entra a la consola del ambiente d
 npm start
 ```
 
+![comando](img/1.PNG)
+
 Una vez encendido el servidor, puede utilizarse un programa para realizar las peticiones de la API (como **[Postman](https://www.postman.com)**) mostradas en la siguiente sección.
 
 ## API
