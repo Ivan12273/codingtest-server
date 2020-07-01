@@ -33,7 +33,7 @@ ADVERTENCIA: Esto se hizo con el fin de hacer pruebas, la visibilidad tanto de l
 
 ### Comandos
 
-Para correr el servidor de **Coding test**, se entra a la consola del ambiente de desarrollo y se introduce el siguiente comando: 
+Para correr el servidor de **Coding test**, se entra a la consola del ambiente de desarrollo y dentro de la carpeta del proyecto se introduce el siguiente comando: 
 
 ```
 npm start
