@@ -15,6 +15,22 @@ Este sistema utiliza las siguientes herramientas:
 
 La aplicación está hecha en **[NodeJS](https://nodejs.org/es/)**. También es necesario instalar **[MongoDB](https://docs.mongodb.com/manual/)**.
 
+### Preparaciones previas
+
+Para las pruebas, crea tu propia classroom, en nuestro caso es "servicioSocialUady", y pon a los miembros con los que vayas a hacer pruebas como "public".
+
+![classroom](img/6.PNG)
+
+De igual forma, el repositorio en el que vayas a subir el ejercicio, debe estár como "public".
+
+![classroom](img/7.PNG)
+
+Y finalmente sube tu código al repositorio, en nuestro caso es "Ejercicio1.java". Nota: En el caso de Java, OmegaUp solo acepta que la clase esté nombrada como "Main".
+
+![classroom](img/8.PNG)
+
+ADVERTENCIA: Esto se hizo con el fin de hacer pruebas, la visibilidad tanto de los usuarios como de los repositorios deberían ser privadas, esto no pudo desarrollarse así por falta de tiempo. Para más información sobre cómo acceder a repositorios privados investigar sobre "GitHub API authentication". Se planeó utilizar esta libreria para dar solución a este caso: https://github.com/octokit/auth.js/
+
 ### Comandos
 
 Para correr el servidor de **Coding test**, se entra a la consola del ambiente de desarrollo y se introduce el siguiente comando: 
