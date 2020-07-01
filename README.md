@@ -2,6 +2,16 @@
 
 Coding test es un sistema enfocado en la evaluación de los códigos de los estudiantes que están en los primeros cursos de programación de las carreras de Ingeniería de Software, Ciencias de la Computación, Ingeniería en Computación u otra carrera que involucre el aprendizaje de la programación. También permite la gestión de las calificaciones obtenidas de los alumnos por parte del maestro.
 
+## Tabla de contenidos
+
+- [Dependencias](#dependencias)
+- [Instrucciones de uso](#instrucciones-de-uso)
+    - [Instalación](#instalación)
+    - [Preparaciones previas](#preparaciones-previas)
+    - [Comandos](#comandos)
+- [API](#api)
+- [Continuación del proyecto](#continuación-del-proyecto)
+
 ## Dependencias
 
 Este sistema utiliza las siguientes herramientas:
@@ -117,7 +127,7 @@ El usuario necesita estar loggeado.
 | ```status``` | String | Estado obtenido de la petición. |
 | ```uploaded_files```  | String | Arreglo de los archivos que fueron enviados. |
 
-## Continuación del proyecto (OnBoarding)
+## Continuación del proyecto
 
 Uno de los problemas que se tuvo en el desarrollo del proyecto fue el de crear problemas para la plataforma en omegaUp desde nuestra API. El objetivo es poder enviar un archivo *.zip* (recibido en el parámetro ```problemContents``` de ```/create-problem```) a través de la API, lo cual se intentó realizar mediante un POST con tipo de contenido ```multipart/formdata```.
 
