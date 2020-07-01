@@ -101,4 +101,4 @@ El usuario necesita estar loggeado.
 
 ## Continuación del proyecto
 
-Para ver más detalles sobre lo que consideró para 
+Para ver más detalles puede revisar el [Reporte del proyecto](https://github.com/Ivan12273/codingtest-server/blob/master/Reporte%20del%20proyecto%20_Coding%20Test_.pdf)
