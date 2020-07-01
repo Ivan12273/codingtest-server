@@ -119,11 +119,51 @@ El usuario necesita estar loggeado.
 
 ## Continuación del proyecto (OnBoarding)
 
+Los siguientes objetivos del proyecto serían poder implementar lo siguiente en la API:
+
+1- Crear problemas en omegaUp.
+2- 
+
+### Crear problemas en omegaUp
 Uno de los problemas que se tuvo en el desarrollo del proyecto fue el de crear problemas para la plataforma en omegaUp desde nuestra API. El objetivo es poder enviar un archivo *.zip* (recibido en el parámetro ```problemContents``` de ```/create-problem```) a través de la API, lo cual se intentó realizar mediante un POST con tipo de contenido ```multipart/formdata```.
+
+![createProblemOnOmegaUp](img/createProblemOnOmegaUp.JPG)
 
 Una vez logrado lo anterior, se podría crear otro método POST para mandar respuestas a ese problema creado en la plataforma de omegaUp. Esto se puede conseguir tomando como modelo el API de ```https://omegaup.com/api/run/create``` cuyos parámetros son los siguientes:
 
+| Parámetro | Tipo   | Descripción |
+| ------ |---------| :------|
+| ```problem_alias``` | String | Alias del problema. |
+| ```language```  | String | Lenguaje de programación con el que se desarrollo la solución. *Ver tabla de lenguajes permitidos.|
+| ```sorce```  | String | Código del programa |
 
+Para el campo ```language``` se aceptan los siguientes valores:
+| Valor | Lenguaje |
+| ------ |---------|
+| kp | Karel (Pascal) |
+| kj | Karel (Java) |
+| c | C11 (gcc 7.4) |
+| c11-gcc | C11 (gcc 7.4) |
+| c11-clang | C11 (clang 6.0) |
+| cpp | C++03 (g++ 7.4) |
+| cpp11 | C++11 (g++ 7.4) |
+| cpp11-gcc | C++11 (g++ 7.4) |
+| cpp11-clang | C++11 (clang++ 6.0) |
+| cpp17-gcc | C++17 (g++ 7.4) |
+| cpp17-clang | C++17 (clang++ 6.0) |
+| java | Java (openjdk 11.0) |
+| py | Python 2.7 |
+| py2 | Python 2.7 |
+| py3 | Python 3.6 |
+| rb | Ruby (2.5) |
+| pl | Perl (5.26) |
+| cs | C# (dotnet 2.2) |
+| pas | Pascal (fpc 3.0) |
+| cat | Output Only |
+| hs | Haskell (ghc 8.0) |
+| lua | Lua (5.2) |
+
+Una vez implementado todo lo anterior
 
 Para ver más detalles puede revisar el [Reporte del proyecto](https://github.com/Ivan12273/codingtest-server/blob/master/Reporte%20del%20proyecto%20_Coding%20Test_.pdf).
 
