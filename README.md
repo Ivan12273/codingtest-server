@@ -121,14 +121,16 @@ El usuario necesita estar loggeado.
 
 Los siguientes objetivos del proyecto serían poder implementar lo siguiente en la API:
 
-1- Crear problemas en omegaUp.
-2- 
+-- Crear problemas en omegaUp.
+-- Responder los problemas en omegaUp.
+-- Obtener los resultados del problema en omegaUp.
 
 ### Crear problemas en omegaUp
 Uno de los problemas que se tuvo en el desarrollo del proyecto fue el de crear problemas para la plataforma en omegaUp desde nuestra API. El objetivo es poder enviar un archivo *.zip* (recibido en el parámetro ```problemContents``` de ```/create-problem```) a través de la API, lo cual se intentó realizar mediante un POST con tipo de contenido ```multipart/formdata```.
 
 ![createProblemOnOmegaUp](img/createProblemOnOmegaUp.JPG)
 
+### Responder los problemas en omegaUp.
 Una vez logrado lo anterior, se podría crear otro método POST para mandar respuestas a ese problema creado en la plataforma de omegaUp. Esto se puede conseguir tomando como modelo el API de ```https://omegaup.com/api/run/create``` cuyos parámetros son los siguientes:
 
 | Parámetro | Tipo   | Descripción |
@@ -163,6 +165,7 @@ Para el campo ```language``` se aceptan los siguientes valores:
 | hs | Haskell (ghc 8.0) |
 | lua | Lua (5.2) |
 
+### Obtener los resultados del problema en omegaUp.
 Una vez implementado todo lo anterior
 
 Para ver más detalles puede revisar el [Reporte del proyecto](https://github.com/Ivan12273/codingtest-server/blob/master/Reporte%20del%20proyecto%20_Coding%20Test_.pdf).
