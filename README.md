@@ -71,7 +71,7 @@ El usuario necesita estar loggeado.
 ### GET ```/calification/:organization/:assignment/:student/:problemAlias/:language/:executionTime```
 
 #### Descripción
-Obtiene la última calificación obtenida de la tarea especificada.
+Envía el código desde el repositorio de GitHub Classroom al problema de omegaUp.
 
 #### Privilegios
 El usuario necesita estar loggeado.
@@ -119,24 +119,16 @@ El usuario necesita estar loggeado.
 
 ## Continuación del proyecto (OnBoarding)
 
-Los siguientes objetivos del proyecto serían poder implementar lo siguiente en la API:
-
--- Crear problemas en omegaUp.
--- Responder los problemas en omegaUp.
--- Obtener los resultados del problema en omegaUp.
-
-### Crear problemas en omegaUp
 Uno de los problemas que se tuvo en el desarrollo del proyecto fue el de crear problemas para la plataforma en omegaUp desde nuestra API. El objetivo es poder enviar un archivo *.zip* (recibido en el parámetro ```problemContents``` de ```/create-problem```) a través de la API, lo cual se intentó realizar mediante un POST con tipo de contenido ```multipart/formdata```.
 
 ![createProblemOnOmegaUp](img/createProblemOnOmegaUp.JPG)
 
-### Responder los problemas en omegaUp.
-Una vez logrado lo anterior, se podría crear otro método POST para mandar respuestas a ese problema creado en la plataforma de omegaUp. Esto se puede conseguir tomando como modelo el API de ```https://omegaup.com/api/run/create``` cuyos parámetros son los siguientes:
+Una vez logrado lo anterior, se puede actualizar el GET ```/calification/:organization/:assignment/:student/:problemAlias/:language/:executionTime``` que toma como modelo el método del API de omegaUp de ```https://omegaup.com/api/run/create``` cuyos parámetros son los siguientes:
 
 | Parámetro | Tipo   | Descripción |
 | ------ |---------| :------|
 | ```problem_alias``` | String | Alias del problema. |
-| ```language```  | String | Lenguaje de programación con el que se desarrollo la solución. *Ver tabla de lenguajes permitidos.|
+| ```language```  | String | Lenguaje de programación con el que se desarrollo la solución. *Ver tabla de lenguajes permitidos*.|
 | ```sorce```  | String | Código del programa |
 
 Para el campo ```language``` se aceptan los siguientes valores:
@@ -165,9 +157,6 @@ Para el campo ```language``` se aceptan los siguientes valores:
 | hs | Haskell (ghc 8.0) |
 | lua | Lua (5.2) |
 
-### Obtener los resultados del problema en omegaUp.
-Una vez implementado todo lo anterior
+La actualización podría implementar un código más dinámico que permita recibir el nombre de usuario y la contraseña para poder iniciar sesión en GitHub Classroom para la obtención del código, y en omegaUp para el envío del código.
 
 Para ver más detalles puede revisar el [Reporte del proyecto](https://github.com/Ivan12273/codingtest-server/blob/master/Reporte%20del%20proyecto%20_Coding%20Test_.pdf).
-
-Para dudas y aclaraciones de los avances puede consultar a los desarrolladores por medio de los correos: d-alvarez1@live.com.mx y i
