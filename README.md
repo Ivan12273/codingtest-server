@@ -55,7 +55,7 @@ El usuario necesita estar loggeado.
 ### GET ```/calification/:organization/:assignment/:student/:problemAlias/:language/:executionTime```
 
 #### Descripción
-Obtiene la última calificación obtenida de la 
+Obtiene la última calificación obtenida de la tarea especificada.
 
 #### Privilegios
 El usuario necesita estar loggeado.
@@ -104,6 +104,10 @@ El usuario necesita estar loggeado.
 ## Continuación del proyecto (OnBoarding)
 
 Uno de los problemas que se tuvo en el desarrollo del proyecto fue el de crear problemas para la plataforma en omegaUp desde nuestra API. El objetivo es poder enviar un archivo *.zip* (recibido en el parámetro ```problemContents``` de ```/create-problem```) a través de la API, lo cual se intentó realizar mediante un POST con tipo de contenido ```multipart/formdata```.
+
+Una vez logrado lo anterior, se podría crear otro método POST para mandar respuestas a ese problema creado en la plataforma de omegaUp. Esto se puede conseguir tomando como modelo el API de ```https://omegaup.com/api/run/create``` cuyos parámetros son los siguientes:
+
+
 
 Para ver más detalles puede revisar el [Reporte del proyecto](https://github.com/Ivan12273/codingtest-server/blob/master/Reporte%20del%20proyecto%20_Coding%20Test_.pdf).
 
