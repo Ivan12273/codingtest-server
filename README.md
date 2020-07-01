@@ -13,7 +13,6 @@ Coding test es un sistema enfocado en la evaluación de los códigos de los estu
 - [Continuación del proyecto](#continuación-del-proyecto)
 
 ## Dependencias
-
 Este sistema utiliza las siguientes herramientas:
 
 - **[API de omegaUp](https://github.com/omegaup/omegaup/wiki/REST-API)**: [omegaUp](https://omegaup.com) es una plataforma en línea en donde los estudiantes pueden mejorar sus habilidades de ingeniería de software a través de ejercicios y  otras competencias. El [API de omegaUp](https://github.com/omegaup/omegaup/wiki/REST-API) es utilizada por este sistema para la creación de los ejercicios y para la evaluación de los mismos.
@@ -128,6 +127,12 @@ El usuario necesita estar loggeado.
 | ```uploaded_files```  | String | Arreglo de los archivos que fueron enviados. |
 
 ## Continuación del proyecto
+
+Las opciones que consideramos
+
+- **Usar la información recopilada y parte del código de Coding Test para trasladarlas a un nuevo proyecto que sea una extensión para Visual Studio Code:**
+- **Seguir el proyecto con el autograding de GitHub Classroom:** Al momento de iniciar con el proyecto,el autograding de GitHub Classroom todavía no estaba implementado, por lo que podría ser una alternativa a seguir en dado caso que ese sistema cumpla con los requerimientos del proyecto.
+- **Continuar desarrollando la API Coding Test:** Continuar con el proyecto 
 
 Uno de los problemas que se tuvo en el desarrollo del proyecto fue el de crear problemas para la plataforma en omegaUp desde nuestra API. El objetivo es poder enviar un archivo *.zip* (recibido en el parámetro ```problemContents``` de ```/create-problem```) a través de la API, lo cual se intentó realizar mediante un POST con tipo de contenido ```multipart/formdata```.
 
