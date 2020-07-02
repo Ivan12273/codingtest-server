@@ -1,6 +1,6 @@
 # Coding test
 
-Coding test es un sistema enfocado en la evaluación de los códigos de los estudiantes que están en los primeros cursos de programación de las carreras de Ingeniería de Software, Ciencias de la Computación, Ingeniería en Computación u otra carrera que involucre el aprendizaje de la programación de la [Facultad de Matematicas de la UADY](https://www.matematicas.uady.mx). También permite la gestión de las calificaciones obtenidas de los alumnos por parte del maestro.
+Coding test es un sistema enfocado en la evaluación de los códigos de los estudiantes que están en los primeros cursos de programación de las carreras de Ingeniería de Software, Ciencias de la Computación, Ingeniería en Computación u otra carrera que involucre el aprendizaje de la programación de la [Facultad de Matemáticas de la UADY](https://www.matematicas.uady.mx). También permite la gestión de las calificaciones obtenidas de los alumnos por parte del maestro.
 
 ## Tabla de contenidos
 
