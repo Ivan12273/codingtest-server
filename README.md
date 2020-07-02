@@ -1,6 +1,6 @@
 # Coding test
 
-Coding test es un sistema enfocado en la evaluación de los códigos de los estudiantes que están en los primeros cursos de programación de las carreras de Ingeniería de Software, Ciencias de la Computación, Ingeniería en Computación u otra carrera que involucre el aprendizaje de la programación. También permite la gestión de las calificaciones obtenidas de los alumnos por parte del maestro.
+Coding test es un sistema enfocado en la evaluación de los códigos de los estudiantes que están en los primeros cursos de programación de las carreras de Ingeniería de Software, Ciencias de la Computación, Ingeniería en Computación u otra carrera que involucre el aprendizaje de la programación de la [Facultad de Matematicas de la UADY](https://www.matematicas.uady.mx). También permite la gestión de las calificaciones obtenidas de los alumnos por parte del maestro.
 
 ## Tabla de contenidos
 
@@ -99,6 +99,32 @@ El usuario necesita estar loggeado.
 | ```language``` | string | Lenguaje en el que fue hecho el código de la tarea. |
 | ```executionTime``` | int | Tiempo de demora máximo para ser ejecutado el código. |
 
+Para el campo ```language``` se aceptan los siguientes valores:
+| Valor | Lenguaje |
+| ------ |---------|
+| kp | Karel (Pascal) |
+| kj | Karel (Java) |
+| c | C11 (gcc 7.4) |
+| c11-gcc | C11 (gcc 7.4) |
+| c11-clang | C11 (clang 6.0) |
+| cpp | C++03 (g++ 7.4) |
+| cpp11 | C++11 (g++ 7.4) |
+| cpp11-gcc | C++11 (g++ 7.4) |
+| cpp11-clang | C++11 (clang++ 6.0) |
+| cpp17-gcc | C++17 (g++ 7.4) |
+| cpp17-clang | C++17 (clang++ 6.0) |
+| java | Java (openjdk 11.0) |
+| py | Python 2.7 |
+| py2 | Python 2.7 |
+| py3 | Python 3.6 |
+| rb | Ruby (2.5) |
+| pl | Perl (5.26) |
+| cs | C# (dotnet 2.2) |
+| pas | Pascal (fpc 3.0) |
+| cat | Output Only |
+| hs | Haskell (ghc 8.0) |
+| lua | Lua (5.2) |
+
 #### Regresa
 | Parámetro | Tipo   | Descripción |
 | ------ |---------| :------|
@@ -149,57 +175,22 @@ Continuar con el proyecto tendría como beneficio que se cumplan la mayor parte 
     - La función que conecta a OmegaUp y GitHub para testear un código funciona y está casi completa, falta el detalle de que al usar el api de GitHub pueda funcionar con un           repositorio privado.
     
 - **Desventajas**
-    - Depende del api de GitHub y de OmegaUp.
-    - Poca documentación del api de OmegaUp.
+    - Depende del API de GitHub y de OmegaUp.
+    - Poca documentación del API de OmegaUp.
     - Al ser un API enfocada a los concursos, por su propia naturaleza la forma de acceder a ciertos datos (como la calificación del alumno) es más complicada de lo que               debería ser para el uso que le queremos dar.
     - Siguiendo lo anterior, para obtener la calificación de un alumno, se necesita esperar cierto tiempo para que OmegaUp compile el ejercicio y devuelva el resultado más             actualizado, de no ser así, devolverá el resultado anterior o no devolverá nada si no existen resultados previos (todo esto ya fue programado, sin embargo, es un                 detalle importante para tener en cuenta). 
-    - A pesar de que varios de las complicaciones con el api de OmegaUp fueron resueltas (para la función de testear un código), aún hay otras complicaciones para la                   creación de un problema en OmegaUp.
+    - A pesar de que varios de las complicaciones con el API de OmegaUp fueron resueltas (para la función de testear un código), aún hay otras complicaciones para la                   creación de un problema en OmegaUp.
 
-Uno de los problemas que se tuvo en el desarrollo del proyecto fue el de crear problemas para la plataforma en omegaUp desde nuestra API. El objetivo es poder enviar un archivo *.zip* (recibido en el parámetro ```problemContents``` de ```/create-problem```) a través de la API, lo cual se intentó realizar mediante un POST con tipo de contenido ```multipart/formdata```.
+Con respecto al envió de problemas desde esta API, el objetivo es poder enviar un archivo *.zip* (recibido en el parámetro ```problemContents``` de ```/create-problem```) a través de la API, lo cual se intentó realizar mediante un POST con tipo de contenido ```multipart/formdata``` sin conseguir resultados satisfactorios.
 
 ![createProblemOnOmegaUp](img/createProblemOnOmegaUp.JPG)
 
-Una vez logrado lo anterior, se puede actualizar el GET ```/calification/:organization/:assignment/:student/:problemAlias/:language/:executionTime``` que toma como modelo el método del API de omegaUp de ```https://omegaup.com/api/run/create``` cuyos parámetros son los siguientes:
-
-| Parámetro | Tipo   | Descripción |
-| ------ |---------| :------|
-| ```problem_alias``` | String | Alias del problema. |
-| ```language```  | String | Lenguaje de programación con el que se desarrollo la solución. *Ver tabla de lenguajes permitidos*.|
-| ```sorce```  | String | Código del programa |
-
-Para el campo ```language``` se aceptan los siguientes valores:
-| Valor | Lenguaje |
-| ------ |---------|
-| kp | Karel (Pascal) |
-| kj | Karel (Java) |
-| c | C11 (gcc 7.4) |
-| c11-gcc | C11 (gcc 7.4) |
-| c11-clang | C11 (clang 6.0) |
-| cpp | C++03 (g++ 7.4) |
-| cpp11 | C++11 (g++ 7.4) |
-| cpp11-gcc | C++11 (g++ 7.4) |
-| cpp11-clang | C++11 (clang++ 6.0) |
-| cpp17-gcc | C++17 (g++ 7.4) |
-| cpp17-clang | C++17 (clang++ 6.0) |
-| java | Java (openjdk 11.0) |
-| py | Python 2.7 |
-| py2 | Python 2.7 |
-| py3 | Python 3.6 |
-| rb | Ruby (2.5) |
-| pl | Perl (5.26) |
-| cs | C# (dotnet 2.2) |
-| pas | Pascal (fpc 3.0) |
-| cat | Output Only |
-| hs | Haskell (ghc 8.0) |
-| lua | Lua (5.2) |
-
-La actualización podría implementar un código más dinámico que permita recibir el nombre de usuario y la contraseña para poder iniciar sesión en GitHub Classroom para la obtención del código, y en omegaUp para el envío del código.
+Si se logra lo anterior, se puede actualizar el GET ```/calification/:organization/:assignment/:student/:problemAlias/:language/:executionTime``` que toma como modelo el método del API de omegaUp de ```https://omegaup.com/api/run/create```. La actualización podría implementar un código más dinámico que permita recibir el nombre de usuario y la contraseña para poder iniciar sesión en GitHub Classroom para la obtención del código, y en omegaUp para el envío del código.
 
 ### Continuar el proyecto con el autograding de GitHub Classroom 
-Al momento de iniciar con el proyecto,el autograding de GitHub Classroom todavía no estaba implementado, por lo que podría ser una alternativa a seguir en dado caso que ese sistema cumpla con los requerimientos del proyecto. Al igual que con la opción anterior, tiene sus ventajas y desventajas que identificamos:
+Al momento de iniciar con este proyecto, el autograding de GitHub Classroom todavía no estaba implementado, por lo que podría ser una alternativa a seguir en dado caso que ese sistema cumpla con los requerimientos del proyecto. Al igual que con la opción anterior, tiene sus ventajas y desventajas que identificamos:
 
-- **Ventajas**
-    - Tiene autograding que permite hacer pruebas unitarias del código de los alumnos.
+- **Ventajas**    
     - Está enlazado con GitHub para acceder a los repositorios de los estudiantes.
     - Tiene más documentación que omegaUp.
     - La complejidad del sistema disminuiría dado que no se necesitaría utilizar omegaUp.
@@ -210,7 +201,7 @@ Al momento de iniciar con el proyecto,el autograding de GitHub Classroom todaví
     
 
 ### Continuar con otro proyecto con la información recopilada
-Otra opción sería usar la información recopilada y parte del código de Coding Test para trasladarlas a un nuevo proyecto que sea una extensión para Visual Studio Code.
+En dado caso que la solución no sea viable de acuerdo a lo ya mencionado, otra opción sería usar la información recopilada y parte del código de Coding Test para trasladarlas a un nuevo proyecto que sea una extensión para Visual Studio Code.
 
 ## Aplicaciones similares
 Existen aplicaciones similares que se asemejan a la solución buscada en el desarrollo de este sistema, que podría ser de utilidad para evaluar sus funcionalidades o de uso por parte de la institución. A continuación, mencionamos las ventajas y desventajas que observamos en ellos:
@@ -221,8 +212,8 @@ Es una plataforma en línea para administración de clases. Permite a los maestr
 - **Ventajas**
     - Contiene funcionalidades de gestión para tareas y autograding.
     - El autograding es general para todos los lenguajes.
-    - Provee estadísticas, como calificación de los alumnos y número de errores cometidos en cierta prueba, que ayudaría en identificar de mejor manera en donde andan fallando los alumnos.
-    - Contiene funcionalidades de gestión para tareas y autograding.
+    - Provee estadísticas, como calificación de los alumnos y número de errores cometidos en cierta prueba, que ayudaría a identificar de mejor manera en donde andan fallando los alumnos.    
+    - Se conecta con los repositorios de los alumnos en GitHub.
     
 - **Desventajas**
     - Su licencia tiene un costo.
@@ -243,7 +234,7 @@ Es una herramienta de calificación automática para tareas de programación usa
     URL del pluggin [http://web-cat.cs.vt.edu/software/netbeans/updates.xml](http://web-cat.cs.vt.edu/software/netbeans/updates.xml)
     
 ### [CodeHS](https://codehs.com)
-Es una plataforma de aprendizaje que ofrece herramientas para la enseñanza de la ciencia de la computación. Permite hacer pruebas con de unidad para los lenguajes de Java, JavaScript y Python, además de que provee herramientas para dar seguimiento a las calificaciones obtenidas de los estudiantes.
+Es una plataforma de aprendizaje que ofrece herramientas para la enseñanza de la ciencia de la computación. Permite hacer pruebas de unidad para los lenguajes de Java, JavaScript y Python, además de que provee herramientas para dar seguimiento a las calificaciones obtenidas de los estudiantes.
 
 - **Ventajas**
     - Contiene funcionalidades de gestión para tareas y autograding.
@@ -254,5 +245,5 @@ Es una plataforma de aprendizaje que ofrece herramientas para la enseñanza de l
     - Es gratuito, sin embargo requiere registro de la institución previa y tiene una versión de paga que contiene más herramientas de gestión.
     
 - **Desventajas**
-    - No tiene la funcionalidad de las pruebas de unidad para otros de los lenguajes que se utilizan en algunas licenciaturas de la facultad como C, C# o C++.
+    - No tiene la funcionalidad de las pruebas de unidad para otros de los lenguajes que se utilizan en algunas licenciaturas ofrecidas de la facultad como C, C# o C++.
     - Para crear cursos personalizados, se requiere del plan de pago.
