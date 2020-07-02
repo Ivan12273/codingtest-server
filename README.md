@@ -239,7 +239,7 @@ Es una herramienta de calificación automática para tareas de programación usa
     - Su instalación es más complicada en comparación con el resto de las herramientas aquí mencionadas.
     - Su documentación no está completa.
     
-    Para ver la instalación del pluggin en NetBean (presione aquí)[https://www.youtube.com/watch?v=amg9rV_I1Go].
+    Para ver la instalación del pluggin en NetBean [presione aquí](https://www.youtube.com/watch?v=amg9rV_I1Go).
     URL del pluggin [http://web-cat.cs.vt.edu/software/netbeans/updates.xml](http://web-cat.cs.vt.edu/software/netbeans/updates.xml)
     
 ### [CodeHS](https://codehs.com)
