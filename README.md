@@ -14,6 +14,7 @@ Coding test es un sistema enfocado en la evaluación de los códigos de los estu
     - [Continuar desarrollando la API Coding Test](#continuar-desarrollando-la-api-coding-test)
     - [Continuar el proyecto con el autograding de GitHub Classroom](#continuar-el-proyecto-con-el-autograding-de-github-classroom)
     - [Continuar con otro proyecto con la información recopilada](#continuar-con-otro-proyecto-con-la-información-recopilada)
+- [Aplicaciones similares](#aplicaciones-similares)
 
 ## Dependencias
 Este sistema utiliza las siguientes herramientas:
@@ -210,3 +211,48 @@ Al momento de iniciar con el proyecto,el autograding de GitHub Classroom todaví
 
 ### Continuar con otro proyecto con la información recopilada
 Otra opción sería usar la información recopilada y parte del código de Coding Test para trasladarlas a un nuevo proyecto que sea una extensión para Visual Studio Code.
+
+## Aplicaciones similares
+Existen aplicaciones similares que se asemejan a la solución buscada en el desarrollo de este sistema, que podría ser de utilidad para evaluar sus funcionalidades o de uso por parte de la institución. A continuación, mencionamos las ventajas y desventajas que observamos en ellos:
+
+### [Gradescope](https://www.gradescope.com)
+Es una plataforma en línea para administración de clases. Permite a los maestros dar seguimiento y calificar tareas en general. Además, provee herramientas para tareas de programación como autograding que funciona para todos los lenguajes.
+
+- **Ventajas**
+    - Contiene funcionalidades de gestión para tareas y autograding.
+    - El autograding es general para todos los lenguajes.
+    - Provee estadísticas, como calificación de los alumnos y número de errores cometidos en cierta prueba, que ayudaría en identificar de mejor manera en donde andan fallando los alumnos.
+    - Contiene funcionalidades de gestión para tareas y autograding.
+    
+- **Desventajas**
+    - Su licencia tiene un costo.
+    
+### [Web-CAT](http://web-cat.org)
+Es una herramienta de calificación automática para tareas de programación usando las propias pruebas del estudiante. Es un pluggin que puede ser instalado en IDEs como NetBeans o Eclipse cuyo uso es mayoritario en los lenguajes Java, C++ y Python.
+
+- **Ventajas**
+    - Permite el aprendizaje de pruebas en los estudiantes, dando detalles como cobertura de las pruebas escritas.
+    - Es Open source y permite la edición del programa de acuerdo a las necesidades particulares.
+    - Puede conectarse a Moodle (no está confirmado).
+    
+- **Desventajas**
+    - Su instalación es más complicada en comparación con el resto de las herramientas aquí mencionadas.
+    - Su documentación no está completa.
+    
+    Para ver la instalación del pluggin en NetBean (presione aquí)[https://www.youtube.com/watch?v=amg9rV_I1Go].
+    URL del pluggin [http://web-cat.cs.vt.edu/software/netbeans/updates.xml](http://web-cat.cs.vt.edu/software/netbeans/updates.xml)
+    
+### [CodeHS](https://codehs.com)
+Es una plataforma de aprendizaje que ofrece herramientas para la enseñanza de la ciencia de la computación. Permite hacer pruebas con de unidad para los lenguajes de Java, JavaScript y Python, además de que provee herramientas para dar seguimiento a las calificaciones obtenidas de los estudiantes.
+
+- **Ventajas**
+    - Contiene funcionalidades de gestión para tareas y autograding.
+    - El autograding con las pruebas de unidad funciona con los lenguajes de Java, JavaScript y Python.
+    - Tiene gran soporte para Java, como pruebas que soportan datos primitivos y objetos.
+    - Se puede escribir código inicial para las pruebas de unidad que permiten verificar casos de uso más avanzados.
+    - Permite monitorear la actividad de los estudiantes.
+    - Es gratuito, sin embargo requiere registro de la institución previa y tiene una versión de paga que contiene más herramientas de gestión.
+    
+- **Desventajas**
+    - No tiene la funcionalidad de las pruebas de unidad para otros de los lenguajes que se utilizan en algunas licenciaturas de la facultad como C, C# o C++.
+    - Para crear cursos personalizados, se requiere del plan de pago.
