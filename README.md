@@ -33,11 +33,11 @@ Para las pruebas, crea tu propia classroom, en nuestro caso es "servicioSocialUa
 
 ![classroom](img/6.PNG)
 
-De igual forma, el repositorio en el que vayas a subir el ejercicio, debe estár como "public".
+De igual forma, el repositorio en el que vayas a subir el ejercicio, debe estar como "public".
 
 ![classroom](img/7.PNG)
 
-Y finalmente sube tu código al repositorio, en nuestro caso es "Ejercicio1.java". Nota: En el caso de Java, OmegaUp solo acepta que la clase esté nombrada como "Main".
+Y finalmente sube tu código al repositorio, en nuestro caso es "Ejercicio1.java". Nota: En el caso de Java, omegaUp solo acepta que la clase esté nombrada como "Main".
 
 ![classroom](img/8.PNG)
 
@@ -200,6 +200,8 @@ Al momento de iniciar con el proyecto,el autograding de GitHub Classroom todaví
 - **Ventajas**
     - Tiene autograding que permite hacer pruebas unitarias del código de los alumnos.
     - Está enlazado con GitHub para acceder a los repositorios de los estudiantes.
+    - Tiene más documentación que omegaUp.
+    - La complejidad del sistema disminuiría dado que no se necesitaría utilizar omegaUp.
     
 - **Desventajas**
     - Se hace un repositorio por cada tarea que se establece, lo que puede llevar a tener una cantidad muy grande de estos, por lo que una buena organización y buen uso de las herramientas de gestión es necesaria.
@@ -208,5 +210,3 @@ Al momento de iniciar con el proyecto,el autograding de GitHub Classroom todaví
 
 ### Continuar con otro proyecto con la información recopilada
 Otra opción sería usar la información recopilada y parte del código de Coding Test para trasladarlas a un nuevo proyecto que sea una extensión para Visual Studio Code.
-
-Para ver más detalles puede revisar el [Reporte del proyecto](https://github.com/Ivan12273/codingtest-server/blob/master/Reporte%20del%20proyecto%20_Coding%20Test_.pdf).
