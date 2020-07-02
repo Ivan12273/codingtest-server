@@ -10,13 +10,17 @@ Coding test es un sistema enfocado en la evaluación de los códigos de los estu
     - [Preparaciones previas](#preparaciones-previas)
     - [Comandos](#comandos)
 - [API](#api)
-- [Continuación del proyecto](#continuación-del-proyecto)
+- [Opciones de continuación del proyecto](#opciones-de-continuación-del-proyecto)
+    - [Continuar desarrollando la API Coding Test](#continuar-desarrollando-la-api-coding-test)
+    - [Continuar desarrollando la API Coding Test](#continuar-desarrollando-la-api-coding-test)
+    
+### Seguir el proyecto con el autograding de GitHub Classroom 
 
 ## Dependencias
 Este sistema utiliza las siguientes herramientas:
 
 - **[API de omegaUp](https://github.com/omegaup/omegaup/wiki/REST-API)**: [omegaUp](https://omegaup.com) es una plataforma en línea en donde los estudiantes pueden mejorar sus habilidades de ingeniería de software a través de ejercicios y  otras competencias. El [API de omegaUp](https://github.com/omegaup/omegaup/wiki/REST-API) es utilizada por este sistema para la creación de los ejercicios y para la evaluación de los mismos.
-- **[GitHub Classroom](https://classroom.github.com)**: es una herramienta de gestión y manejo que utiliza la API de GitHub para habilitar el flujo de trabajo de GitHub para la educación. Esta herramienta es utilizada por el sistema para la obtención de los códigos del repositorio del maestro el cual contiene el código recibido de los estudiantes para luego ser calificados mediante el API de omegaUp.
+- **[GitHub Classroom](https://classroom.github.com)**: es una herramienta de gestión y manejo que utiliza la [API de GitHub](https://developer.github.com/v3/) para habilitar el flujo de trabajo de GitHub para la educación. Esta herramienta es utilizada por el sistema para la obtención de los códigos del repositorio del maestro el cual contiene el código recibido de los estudiantes para luego ser calificados mediante el API de omegaUp.
 
 ## Instrucciones de uso
 
@@ -126,13 +130,29 @@ El usuario necesita estar loggeado.
 | ```status``` | String | Estado obtenido de la petición. |
 | ```uploaded_files```  | String | Arreglo de los archivos que fueron enviados. |
 
-## Continuación del proyecto
+## Opciones de continuación del proyecto
 
-Las opciones que consideramos
+Las opciones que consideramos son las siguientes:
+- Continuar desarrollando la API Coding Test.
+- Usar la información recopilada y parte del código de Coding Test para trasladarlas a un nuevo proyecto que sea una extensión para Visual Studio Code.
+- Seguir el proyecto con el autograding de GitHub Classroom.
 
-- **Usar la información recopilada y parte del código de Coding Test para trasladarlas a un nuevo proyecto que sea una extensión para Visual Studio Code:**
-- **Seguir el proyecto con el autograding de GitHub Classroom:** Al momento de iniciar con el proyecto,el autograding de GitHub Classroom todavía no estaba implementado, por lo que podría ser una alternativa a seguir en dado caso que ese sistema cumpla con los requerimientos del proyecto.
-- **Continuar desarrollando la API Coding Test:** Continuar con el proyecto 
+### Continuar desarrollando la API Coding Test
+Continuar con el proyecto tendría como beneficio que se cumplan la mayor parte de los requerimientos para este proyecto, ya que podría irse adaptando para cumplir con las necesidades de la institución. Sin embargo, hay una serie de ventajas y desventajas que habría que tomar en cuenta, estas se presentan a continuación:
+
+- Ventajas
+    - Como es un API propio, pueden añadirse y cambiarse funciones, se puede personalizar para adaptarse a las necesidades de los profesores de nuestra facultad.
+    - OmegaUp como herramienta para testing, es superior por el momento al autograding, tiene más funciones y permite más personalización en los problemas.
+    - OmegaUp tiene soporte para más lenguajes que el autograding.
+    - OmegaUp es un sistema terminado, mientras que el autograding sigue en fase de pruebas y aún pueden surgir errores.
+    - El sistema está documentado y explicado, se tiene conocimiento de las peticiones más importantes de OmegaUp que utiliza el sistema.
+    - La función que conecta a OmegaUp y GitHub para testear un código funciona y está casi completa, falta el detalle de que al usar el api de GitHub pueda funcionar con un           repositorio privado.
+- Desventajas
+    - Depende del api de GitHub y de OmegaUp.
+    - Poca documentación del api de OmegaUp.
+    - Al ser un API enfocada a los concursos, por su propia naturaleza la forma de acceder a ciertos datos (como la calificación del alumno) es más complicada de lo que               debería ser para el uso que le queremos dar.
+    - Siguiendo lo anterior, para obtener la calificación de un alumno, se necesita esperar cierto tiempo para que OmegaUp compile el ejercicio y devuelva el resultado más             actualizado, de no ser así, devolverá el resultado anterior o no devolverá nada si no existen resultados previos (todo esto ya fue programado, sin embargo, es un                 detalle importante para tener en cuenta). 
+    - A pesar de que varios de las complicaciones con el api de OmegaUp fueron resueltas (para la función de testear un código), aún hay otras complicaciones para la                   creación de un problema en OmegaUp.
 
 Uno de los problemas que se tuvo en el desarrollo del proyecto fue el de crear problemas para la plataforma en omegaUp desde nuestra API. El objetivo es poder enviar un archivo *.zip* (recibido en el parámetro ```problemContents``` de ```/create-problem```) a través de la API, lo cual se intentó realizar mediante un POST con tipo de contenido ```multipart/formdata```.
 
@@ -173,5 +193,10 @@ Para el campo ```language``` se aceptan los siguientes valores:
 | lua | Lua (5.2) |
 
 La actualización podría implementar un código más dinámico que permita recibir el nombre de usuario y la contraseña para poder iniciar sesión en GitHub Classroom para la obtención del código, y en omegaUp para el envío del código.
+
+
+### Usar la información recopilada y parte del código de Coding Test para trasladarlas a un nuevo proyecto que sea una extensión para Visual Studio Code
+### Seguir el proyecto con el autograding de GitHub Classroom 
+Al momento de iniciar con el proyecto,el autograding de GitHub Classroom todavía no estaba implementado, por lo que podría ser una alternativa a seguir en dado caso que ese sistema cumpla con los requerimientos del proyecto.
 
 Para ver más detalles puede revisar el [Reporte del proyecto](https://github.com/Ivan12273/codingtest-server/blob/master/Reporte%20del%20proyecto%20_Coding%20Test_.pdf).
