@@ -12,8 +12,8 @@ Coding test es un sistema enfocado en la evaluación de los códigos de los estu
 - [API](#api)
 - [Opciones de continuación del proyecto](#opciones-de-continuación-del-proyecto)
     - [Continuar desarrollando la API Coding Test](#continuar-desarrollando-la-api-coding-test)
-    - [Continuar desarrollando la API Coding Test](#continuar-desarrollando-la-api-coding-test)
-    
+    - [Continuar el proyecto con el autograding de GitHub Classroom](#continuar-el-proyecto-con-el-autograding-de-github-classroom)
+    - [Continuar con otro proyecto con la información recopilada](#continuar-con-otro-proyecto-con-la-información-recopilada)
 ### Seguir el proyecto con el autograding de GitHub Classroom 
 
 ## Dependencias
@@ -133,21 +133,21 @@ El usuario necesita estar loggeado.
 ## Opciones de continuación del proyecto
 
 Las opciones que consideramos son las siguientes:
-- Continuar desarrollando la API Coding Test.
-- Usar la información recopilada y parte del código de Coding Test para trasladarlas a un nuevo proyecto que sea una extensión para Visual Studio Code.
-- Seguir el proyecto con el autograding de GitHub Classroom.
+- [Continuar desarrollando la API Coding Test](#continuar-desarrollando-la-api-coding-test)
+- [Continuar el proyecto con el autograding de GitHub Classroom](#continuar-el-proyecto-con-el-autograding-de-github-classroom)
+- [Continuar con otro proyecto con la información recopilada](#continuar-con-otro-proyecto-con-la-información-recopilada)
 
 ### Continuar desarrollando la API Coding Test
 Continuar con el proyecto tendría como beneficio que se cumplan la mayor parte de los requerimientos para este proyecto, ya que podría irse adaptando para cumplir con las necesidades de la institución. Sin embargo, hay una serie de ventajas y desventajas que habría que tomar en cuenta, estas se presentan a continuación:
 
-- Ventajas
+- **Ventajas**
     - Como es un API propio, pueden añadirse y cambiarse funciones, se puede personalizar para adaptarse a las necesidades de los profesores de nuestra facultad.
     - OmegaUp como herramienta para testing, es superior por el momento al autograding, tiene más funciones y permite más personalización en los problemas.
     - OmegaUp tiene soporte para más lenguajes que el autograding.
     - OmegaUp es un sistema terminado, mientras que el autograding sigue en fase de pruebas y aún pueden surgir errores.
     - El sistema está documentado y explicado, se tiene conocimiento de las peticiones más importantes de OmegaUp que utiliza el sistema.
     - La función que conecta a OmegaUp y GitHub para testear un código funciona y está casi completa, falta el detalle de que al usar el api de GitHub pueda funcionar con un           repositorio privado.
-- Desventajas
+- **Desventajas**
     - Depende del api de GitHub y de OmegaUp.
     - Poca documentación del api de OmegaUp.
     - Al ser un API enfocada a los concursos, por su propia naturaleza la forma de acceder a ciertos datos (como la calificación del alumno) es más complicada de lo que               debería ser para el uso que le queremos dar.
@@ -194,9 +194,19 @@ Para el campo ```language``` se aceptan los siguientes valores:
 
 La actualización podría implementar un código más dinámico que permita recibir el nombre de usuario y la contraseña para poder iniciar sesión en GitHub Classroom para la obtención del código, y en omegaUp para el envío del código.
 
+### Continuar el proyecto con el autograding de GitHub Classroom 
+Al momento de iniciar con el proyecto,el autograding de GitHub Classroom todavía no estaba implementado, por lo que podría ser una alternativa a seguir en dado caso que ese sistema cumpla con los requerimientos del proyecto. Al igual que con la opción anterior, tiene sus ventajas y desventajas que identificamos:
 
-### Usar la información recopilada y parte del código de Coding Test para trasladarlas a un nuevo proyecto que sea una extensión para Visual Studio Code
-### Seguir el proyecto con el autograding de GitHub Classroom 
-Al momento de iniciar con el proyecto,el autograding de GitHub Classroom todavía no estaba implementado, por lo que podría ser una alternativa a seguir en dado caso que ese sistema cumpla con los requerimientos del proyecto.
+- **Ventajas**
+    - Tiene autograding que permite hacer pruebas unitarias del código de los alumnos.
+    - Está enlazado con GitHub para acceder a los repositorios de los estudiantes.
+    
+- **Desventajas**
+    - Se hace un repositorio por cada tarea que se establece, lo que puede llevar a tener una cantidad muy grande de estos, por lo que una buena organización y buen uso de las herramientas de gestión es necesaria.
+    - No están disponibles los cambios del repositorio original a los nuevos repositorios creados por los estudiantes para hacer la tarea.
+    
+
+### Continuar con otro proyecto con la información recopilada
+Usar la información recopilada y parte del código de Coding Test para trasladarlas a un nuevo proyecto que sea una extensión para Visual Studio Code
 
 Para ver más detalles puede revisar el [Reporte del proyecto](https://github.com/Ivan12273/codingtest-server/blob/master/Reporte%20del%20proyecto%20_Coding%20Test_.pdf).
