@@ -14,7 +14,6 @@ Coding test es un sistema enfocado en la evaluación de los códigos de los estu
     - [Continuar desarrollando la API Coding Test](#continuar-desarrollando-la-api-coding-test)
     - [Continuar el proyecto con el autograding de GitHub Classroom](#continuar-el-proyecto-con-el-autograding-de-github-classroom)
     - [Continuar con otro proyecto con la información recopilada](#continuar-con-otro-proyecto-con-la-información-recopilada)
-### Seguir el proyecto con el autograding de GitHub Classroom 
 
 ## Dependencias
 Este sistema utiliza las siguientes herramientas:
@@ -147,6 +146,7 @@ Continuar con el proyecto tendría como beneficio que se cumplan la mayor parte 
     - OmegaUp es un sistema terminado, mientras que el autograding sigue en fase de pruebas y aún pueden surgir errores.
     - El sistema está documentado y explicado, se tiene conocimiento de las peticiones más importantes de OmegaUp que utiliza el sistema.
     - La función que conecta a OmegaUp y GitHub para testear un código funciona y está casi completa, falta el detalle de que al usar el api de GitHub pueda funcionar con un           repositorio privado.
+    
 - **Desventajas**
     - Depende del api de GitHub y de OmegaUp.
     - Poca documentación del api de OmegaUp.
@@ -207,6 +207,6 @@ Al momento de iniciar con el proyecto,el autograding de GitHub Classroom todaví
     
 
 ### Continuar con otro proyecto con la información recopilada
-Usar la información recopilada y parte del código de Coding Test para trasladarlas a un nuevo proyecto que sea una extensión para Visual Studio Code
+Otra opción sería usar la información recopilada y parte del código de Coding Test para trasladarlas a un nuevo proyecto que sea una extensión para Visual Studio Code.
 
 Para ver más detalles puede revisar el [Reporte del proyecto](https://github.com/Ivan12273/codingtest-server/blob/master/Reporte%20del%20proyecto%20_Coding%20Test_.pdf).
