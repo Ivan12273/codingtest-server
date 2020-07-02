@@ -54,7 +54,23 @@ npm start
 
 ![comando](img/1.PNG)
 
-Una vez encendido el servidor, puede utilizarse un programa para realizar las peticiones de la API (como **[Postman](https://www.postman.com)**) mostradas en la siguiente sección.
+Deberá salirte una pantalla como se muestra a continuación:
+
+![comando](img/2.PNG)
+
+Recuerda que antes de ejecutar el código, debes ingresar tu usuario y contraseña de OmegaUp en el archivo classroom.js, dentro de la carpeta controller.
+
+![comando](img/3.PNG)
+
+Una vez encendido el servidor, puede utilizarse un programa para realizar las peticiones de la API (como **[Postman](https://www.postman.com)**).
+
+![comando](img/4.PNG)
+
+Está consulta, deberá mostrar la calificación del código del usuario, como se muestra en la siguiente imagen.
+
+![comando](img/5.PNG)
+
+Para más información de como armar las consultas, ver la siguiente sección.
 
 ## API
 Para el uso de la API es requerido poner de prefijo ```http://localhost:3700/classroom```. Por ejemplo:
