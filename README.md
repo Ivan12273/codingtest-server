@@ -72,6 +72,8 @@ Está consulta, deberá mostrar la calificación del código del usuario, como s
 
 Para más información de como armar las consultas, ver la siguiente sección.
 
+Puede encontrar un video de ejemplo de todo el proceso haciendo clic **[Aquí](https://www.youtube.com/watch?v=i1nTNzRw6Yo)**
+
 ## API
 Para el uso de la API es requerido poner de prefijo ```http://localhost:3700/classroom```. Por ejemplo:
 ```http://localhost:3700/classroom/problem/:student/:organization/:assignment```
