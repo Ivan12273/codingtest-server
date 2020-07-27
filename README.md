@@ -96,7 +96,7 @@ El usuario necesita estar loggeado.
 #### Regresa
 | Parámetro | Tipo   | Descripción |
 | ------ |---------| :------|
-| ```instructions``` | string | Instrucciones del tarea asignada. |
+| ```instructions``` | string | Instrucciones de la tarea asignada. |
 
 
 ### GET ```/calification/:organization/:assignment/:student/:problemAlias/:language/:executionTime```
