@@ -171,8 +171,8 @@ El usuario necesita estar loggeado.
 #### Regresa
 | Parámetro | Tipo   | Descripción |
 | ------ |---------| :------|
-| ```status``` | String | Estado obtenido de la petición. |
-| ```uploaded_files```  | String | Arreglo de los archivos que fueron enviados. |
+| ```status``` | string | Estado obtenido de la petición. |
+| ```uploaded_files```  | string | Arreglo de los archivos que fueron enviados. |
 
 ## Opciones de continuación del proyecto
 
