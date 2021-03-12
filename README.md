@@ -81,22 +81,28 @@ Para el uso de la API es requerido poner de prefijo ```http://localhost:3700/cla
 ### GET ```/problem/:student/:organization/:assignment```
 
 #### Descripción
-Obtiene los detalles de la tarea asignada.
+Agrega un usuario al sistema, creando un registro de su nombre, función, fecha de nacimiento y contraseña.
 
 #### Privilegios
-El usuario necesita estar loggeado.
+El usuario necesita un token de autorización.
 
 #### Parámetros
 | Parámetro | Tipo   | Descripción |
 | ------ |---------| :------|
-| ```student``` | string | Nombre del estudiante registrado en GitHub Classroom. |
-| ```organization```  | string | Nombre de la organización registrada en GitHub Classroom. |
-| ```assignment``` | string | Nombre de la tarea registrada en GitHub Classroom. |
+| ```role``` | string | Rol del usuario. |
+| ```name```  | string | Nombre del usuario. |
+| ```birthday``` | string | Cumpleaños del usuario. |
+| ```email``` | string | Correo del usuario. |
+| ```password``` | string | Contraseña del usuario. |
 
 #### Regresa
 | Parámetro | Tipo   | Descripción |
 | ------ |---------| :------|
-| ```instructions``` | string | Instrucciones de la tarea asignada. |
+| ```role``` | string | Rol del usuario. |
+| ```name```  | string | Nombre del usuario. |
+| ```birthday``` | string | Cumpleaños del usuario. |
+| ```email``` | string | Correo del usuario. |
+| ```password``` | string | Contraseña del usuario. |
 
 
 ### GET ```/calification/:organization/:assignment/:student/:problemAlias/:language/:executionTime```
